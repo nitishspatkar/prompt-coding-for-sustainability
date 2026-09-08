@@ -1,0 +1,53 @@
+prompt_id,prompt_text
+P001,"Refactor this batch job so it only re-processes records changed since the last run instead of the full table every night."
+P002,"Write a Python script that pulls the hourly carbon intensity of the local grid and delays non-urgent training jobs until intensity drops below a threshold."
+P003,"Add pagination to the admin user list. It currently loads all 400k rows."
+P004,"Our onboarding flow has 14 required fields. Rewrite it so a new user can finish in under a minute, and explain what you dropped and why."
+P005,"Make this image pipeline serve WebP with responsive sizes so mobile users on metered connections download less data."
+P006,"Convert the polling in this React hook to a websocket subscription.
+
+```
+useEffect(() => {
+  const t = setInterval(() => fetch('/api/status').then(setStatus), 1000);
+  return () => clearInterval(t);
+}, []);
+```"
+P007,"Help me write a deprecation plan for the v1 API so integrators have a year to migrate and our on-call load drops."
+P008,"Add an offline mode to the field data collection app. Enumerators work in areas with no coverage for hours at a time."
+P009,"Rewrite these error messages so they are readable by someone who is not a developer, and add screen reader labels to the form."
+P010,"Set up autoscaling so the staging cluster scales to zero overnight and on weekends."
+P011,"Generate unit tests for this module.
+
+```
+def normalize(name):
+    return ' '.join(name.strip().split()).title()
+```"
+P012,"Our team spends two days a month on manual release notes. Write a tool that drafts them from merged pull requests."
+P013,"Review this Dockerfile and cut the image size. Builds take eleven minutes and the CI bill is getting attention from finance.
+
+```
+FROM node:20
+COPY . .
+RUN npm install
+CMD [""node"", ""server.js""]
+```"
+P014,"Add a dark theme to the dashboard."
+P015,"Write a migration that adds a soft-delete column and backfills it without locking the table during business hours."
+P016,"Explain what this regular expression matches.
+
+```
+^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+)@(?:[a-z0-9-]+\.)+[a-z]{2,}$
+```"
+P017,"Build a queue so on-call engineers stop being paged for retryable failures at night."
+P018,"Add a consent banner that stores no analytics identifiers until the user opts in."
+P019,"Optimise this SQL query. It runs on every page load and does a full scan of a 90 million row table.
+
+```
+SELECT * FROM events WHERE lower(source) = 'web' ORDER BY created_at DESC LIMIT 50;
+```"
+P020,"Rename the variables in this function to something clearer for the next maintainer."
+P021,"We want to run inference on-device rather than in the cloud so the app works on older phones and sends less telemetry. Sketch the approach."
+P022,"Add a rate limiter to the public API to keep one bad client from degrading service for everyone else."
+P023,"Write a cron job that emails me the daily signup count."
+P024,"Replace the third-party charting library with a smaller one. The bundle is 1.4 MB and our users are mostly on 3G."
+P025,"Document the architecture of this service so a new hire can be productive without shadowing someone for a week."

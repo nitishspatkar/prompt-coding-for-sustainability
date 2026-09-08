@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #fbfaf9; }
+  * { box-sizing: border-box; }
+  a { color: #34506b; text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { color: #1c1a18; }
+  select, input, button, textarea { font-family: inherit; }
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', Helvetica, sans-serif; color: #1c1a18; background: #fbfaf9; min-height: 100vh; -webkit-font-smoothing: antialiased;">
+
+  <sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+    <div style="min-height: 100vh; display: grid; place-items: center; padding: 40px 24px;">
+      <div style="width: 100%; max-width: 420px;">
+        <p style="font-family: inherit; font-size: 24px; line-height: 1.4; color: #1c1a18; margin: 0 0 32px; text-wrap: pretty;">Enter the participant ID from your invitation email to begin coding.</p>
+        <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px;" for="pid">Participant ID</label>
+        <input id="pid" type="text" value="{{ pid }}" onChange="{{ onPid }}" placeholder="e.g. P-0417" autoComplete="off" style="width: 100%; padding: 12px 14px; font-family: inherit; font-size: 15px; border: 1px solid #d8d4cf; border-radius: 3px; background: #fff; color: #1c1a18; outline: none;" style-focus="border-color: #34506b;" />
+        <button onClick="{{ onLogin }}" disabled="{{ loginDisabled }}" style="margin-top: 16px; width: 100%; padding: 12px 16px; font-size: 14px; font-weight: 500; border-radius: 3px; border: 1px solid #1c1a18; background: #1c1a18; color: #fbfaf9; cursor: pointer;" style-hover="background: #34506b; border-color: #34506b;">Begin session</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isPurpose }}" hint-placeholder-val="{{ false }}">
+    <div style="min-height: 100vh; display: grid; place-items: center; padding: 48px 24px;">
+      <div style="width: 100%; max-width: 620px;">
+        <div style="font-size: 15.5px; line-height: 1.7; color: #38332e; display: grid; gap: 16px;">
+          <p style="margin: 0;">You will read a set of prompts that practitioners wrote for AI coding assistants. For each prompt, decide whether it contains content relevant to software sustainability.</p>
+          <p style="margin: 0;">If a prompt is relevant, record every sustainability effect you can identify. An effect is described by the dimension it acts on and the valence of that effect. A prompt may carry several effects across several dimensions.</p>
+          <p style="margin: 0;">Code only what the prompt text states or clearly implies. Do not infer effects from the technology stack alone, and do not judge the quality of the prompt.</p>
+          <p style="margin: 0;">The coding guidelines stay available at all times from the button in the header. Work at your own pace.</p>
+        </div>
+        <p style="margin: 16px 0 0; font-size: 15.5px; line-height: 1.7; color: #38332e;">Each prompt is saved the moment you confirm it. You can close the tab at any point and resume where you left off by signing in with the same participant ID.</p>
+        <div style="display: flex; gap: 12px; margin-top: 36px;">
+          <button onClick="{{ onStart }}" style="padding: 12px 22px; font-size: 14px; font-weight: 500; border-radius: 3px; border: 1px solid #1c1a18; background: #1c1a18; color: #fbfaf9; cursor: pointer;" style-hover="background: #34506b; border-color: #34506b;">Start coding</button>
+          <button onClick="{{ onOpenPanel }}" style="padding: 12px 22px; font-size: 14px; font-weight: 500; border-radius: 3px; border: 1px solid #d8d4cf; background: #fff; color: #1c1a18; cursor: pointer;" style-hover="border-color: #1c1a18;">Read the guidelines first</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isCoding }}" hint-placeholder-val="{{ false }}">
+    <div style="min-height: 100vh; display: flex; flex-direction: column;">
+
+      <header style="position: sticky; top: 0; z-index: 20; background: rgba(251,250,249,0.96); backdrop-filter: blur(6px); border-bottom: 1px solid #e3e0dc; padding: 12px 24px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+        <div style="flex: 1;"></div>
+        <div style="display: flex; align-items: center; gap: 14px; font-size: 15.5px; font-weight: 500; color: #1c1a18;">
+          <span>{{ codedCount }} coded</span>
+          <span style="color: #cdc8c2;">/</span>
+          <span>{{ remainingCount }} remaining</span>
+          <span style="color: #cdc8c2;">/</span>
+          <span>{{ totalCount }} total</span>
+          <div style="width: 168px; height: 6px; background: #e6e3df; border-radius: 3px; overflow: hidden;">
+            <div style="height: 100%; background: #34506b; width: {{ progressWidth }};"></div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button onClick="{{ onToggleList }}" style="padding: 7px 12px; font-size: 12.5px; border-radius: 3px; border: 1px solid #d8d4cf; background: #fff; color: #1c1a18; cursor: pointer;" style-hover="border-color: #1c1a18;">All prompts</button>
+          <button onClick="{{ onTogglePanel }}" style="padding: 7px 12px; font-size: 12.5px; border-radius: 3px; border: 1px solid #d8d4cf; background: #fff; color: #1c1a18; cursor: pointer;" style-hover="border-color: #1c1a18;">{{ panelButtonLabel }}</button>
+        </div>
+      </header>
+
+      <div style="flex: 1; display: flex; align-items: stretch;">
+
+        <main style="flex: 1; min-width: 0; display: flex; justify-content: center; padding: 40px 24px 64px;">
+          <div style="width: 100%; max-width: 720px;">
+
+            <article style="border: 1px solid #e3e0dc; border-radius: 4px; background: #fff; box-shadow: 0 1px 2px rgba(28,26,24,0.04); overflow: hidden;">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 22px; background: #f6f4f1; border-bottom: 1px solid #e3e0dc;">
+                <span style="font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; color: #1c1a18;">{{ currentId }}</span>
+                <span style="font-size: 11.5px; color: #8a837c;">{{ positionLabel }} · {{ statusLabel }}</span>
+              </div>
+              <div style="padding: 24px 26px 26px;">
+                <div style="font-size: 17px; line-height: 1.68; color: #1c1a18; white-space: pre-wrap; text-wrap: pretty;">{{ currentText }}</div>
+                <sc-if value="{{ hasCode }}" hint-placeholder-val="{{ false }}">
+                  <div style="margin-top: 20px; border: 1px solid #e3e0dc; border-radius: 3px; overflow: hidden;">
+                    <div style="padding: 6px 14px; background: #f6f4f1; border-bottom: 1px solid #e3e0dc; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #8a837c;">Code included in prompt</div>
+                    <pre style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; line-height: 1.7; background: #fcfbfa; padding: 14px 16px; overflow-x: auto; color: #38332e; margin: 0;">{{ currentCode }}</pre>
+                  </div>
+                </sc-if>
+              </div>
+            </article>
+
+            <div style="margin-top: 38px;">
+              <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.02em; margin-bottom: 10px;">Sustainability relevance</div>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button onClick="{{ onRelevant }}" style="padding: 10px 18px; font-size: 14px; border-radius: 3px; cursor: pointer; border: 1px solid {{ relevantBorder }}; background: {{ relevantBg }}; color: {{ relevantColor }};">Relevant</button>
+                <button onClick="{{ onNotRelevant }}" style="padding: 10px 18px; font-size: 14px; border-radius: 3px; cursor: pointer; border: 1px solid {{ notRelevantBorder }}; background: {{ notRelevantBg }}; color: {{ notRelevantColor }};">Not Relevant</button>
+              </div>
+            </div>
+
+            <sc-if value="{{ showEffects }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top: 32px;">
+
+                <sc-if value="{{ cheatEnabled }}" hint-placeholder-val="{{ false }}">
+                  <div style="border: 1px solid #e3e0dc; border-radius: 3px; background: #fff; margin-bottom: 20px;">
+                    <button onClick="{{ onToggleCheat }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; background: none; border: none; cursor: pointer; font-size: 12.5px; color: #57514b; text-align: left;" style-hover="color: #1c1a18;">
+                      <span>Code cheat-sheet — dimensions and valence</span>
+                      <span style="font-family: inherit;">{{ cheatChevron }}</span>
+                    </button>
+                    <sc-if value="{{ cheatOpen }}" hint-placeholder-val="{{ false }}">
+                      <div style="border-top: 1px solid #e3e0dc; padding: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px 32px;">
+                        <div>
+                          <div style="font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #8a837c; margin-bottom: 8px;">Dimensions</div>
+                          <div style="display: grid; gap: 7px;">
+                            <sc-for list="{{ cheatDims }}" as="d" hint-placeholder-count="5">
+                              <div style="display: flex; gap: 10px; font-size: 12.5px; line-height: 1.5;">
+                                <span style="color: #34506b; flex: none; width: 78px;">{{ d.code }}</span>
+                                <span style="color: #57514b;">{{ d.short }}</span>
+                              </div>
+                            </sc-for>
+                          </div>
+                        </div>
+                        <div>
+                          <div style="font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #8a837c; margin-bottom: 8px;">Valence</div>
+                          <div style="display: grid; gap: 7px;">
+                            <sc-for list="{{ cheatVals }}" as="v" hint-placeholder-count="4">
+                              <div style="display: flex; gap: 10px; font-size: 12.5px; line-height: 1.5;">
+                                <span style="color: #7a6a3c; flex: none; width: 78px;">{{ v.code }}</span>
+                                <span style="color: #57514b;">{{ v.short }}</span>
+                              </div>
+                            </sc-for>
+                          </div>
+                        </div>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-if>
+
+                <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 12px;">
+                  <div style="font-size: 13px; font-weight: 600;">Identified effects</div>
+                  <div style="font-family: inherit; font-size: 11.5px; color: #8a837c;">{{ effectCountLabel }}</div>
+                </div>
+
+                <div style="display: grid; gap: 10px;">
+                  <sc-for list="{{ rows }}" as="row" hint-placeholder-count="1">
+                    <div style="border: 1px solid #e3e0dc; border-radius: 3px; background: #fff; padding: 12px 14px; display: grid; grid-template-columns: 22px minmax(0, 1fr) minmax(0, 1fr) 32px; gap: 10px; align-items: center;">
+                      <span style="font-family: inherit; font-size: 11.5px; color: #a8a19a;">{{ row.num }}</span>
+                      <label style="display: grid; gap: 5px;">
+                        <span style="font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #8a837c;">Dimension</span>
+                        <select value="{{ row.dim }}" onChange="{{ row.onDim }}" style="padding: 8px 9px; font-size: 13px; border: 1px solid #d8d4cf; border-radius: 3px; background: #fff; color: #1c1a18;">
+                          <option value="">— select —</option>
+                          <option value="ENV">ENV — Environmental</option>
+                          <option value="SOC">SOC — Social</option>
+                          <option value="IND">IND — Individual</option>
+                          <option value="ECO">ECO — Economic</option>
+                          <option value="TEC">TEC — Technical</option>
+                        </select>
+                      </label>
+                      <label style="display: grid; gap: 5px;">
+                        <span style="font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #8a837c;">Valence</span>
+                        <select value="{{ row.val }}" onChange="{{ row.onVal }}" style="padding: 8px 9px; font-size: 13px; border: 1px solid #d8d4cf; border-radius: 3px; background: #fff; color: #1c1a18;">
+                          <option value="">— select —</option>
+                          <option value="POS">POS — Positive</option>
+                          <option value="NEG">NEG — Negative</option>
+                          <option value="MIX">MIX — Mixed</option>
+                          <option value="CANT_TELL">CANT_TELL — Cannot tell</option>
+                        </select>
+                      </label>
+                      <button onClick="{{ row.onRemove }}" title="Remove effect" style="justify-self: end; width: 28px; height: 28px; border: 1px solid #e3e0dc; border-radius: 3px; background: #fff; color: #8a837c; cursor: pointer; font-size: 15px; line-height: 1;" style-hover="border-color: #9a5b4f; color: #9a5b4f;">×</button>
+                      <div style="grid-column: 2 / 5;">
+                        <input type="text" value="{{ row.note }}" onChange="{{ row.onNote }}" placeholder="Optional note — quote or brief rationale" style="width: 100%; padding: 8px 9px; font-size: 13px; border: 1px solid #eae7e3; border-radius: 3px; background: #fcfbfa; color: #38332e; outline: none;" style-focus="border-color: #34506b; background: #fff;" />
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+
+                <button onClick="{{ onAddRow }}" style="margin-top: 12px; padding: 9px 14px; font-size: 13px; border: 1px dashed #cdc8c2; border-radius: 3px; background: none; color: #57514b; cursor: pointer;" style-hover="border-color: #34506b; color: #34506b;">+ Add effect</button>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ isNotRelevant }}" hint-placeholder-val="{{ false }}">
+              <p style="margin: 24px 0 0; font-size: 13.5px; line-height: 1.6; color: #8a837c;">No effects are recorded for prompts marked not relevant.</p>
+            </sc-if>
+
+            <div style="margin-top: 32px; padding-top: 18px; border-top: 1px solid #e3e0dc; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <button onClick="{{ onPrev }}" disabled="{{ prevDisabled }}" style="padding: 9px 14px; font-size: 13px; border: 1px solid #d8d4cf; border-radius: 3px; background: #fff; color: #1c1a18; cursor: pointer;" style-hover="border-color: #1c1a18;">← Previous</button>
+        <button onClick="{{ onNext }}" disabled="{{ nextDisabled }}" style="padding: 9px 14px; font-size: 13px; border: 1px solid #d8d4cf; border-radius: 3px; background: #fff; color: #1c1a18; cursor: pointer;" style-hover="border-color: #1c1a18;">Next →</button>
+        <span style="font-size: 12.5px; color: #8a837c;">{{ validationHint }}</span>
+        <div style="flex: 1;"></div>
+        <sc-if value="{{ allCoded }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ onOpenSubmit }}" style="padding: 10px 18px; font-size: 13.5px; font-weight: 500; border: 1px solid #34506b; border-radius: 3px; background: #34506b; color: #fff; cursor: pointer;" style-hover="background: #1c1a18; border-color: #1c1a18;">Submit all codings</button>
+        </sc-if>
+        <button onClick="{{ onConfirm }}" disabled="{{ confirmDisabled }}" style="padding: 10px 20px; font-size: 13.5px; font-weight: 500; border: 1px solid {{ confirmBorder }}; border-radius: 3px; background: {{ confirmBg }}; color: {{ confirmColor }}; cursor: pointer;">{{ confirmLabel }}</button>
+            </div>
+          </div>
+        </main>
+
+        <sc-if value="{{ panelOpen }}" hint-placeholder-val="{{ false }}">
+          <aside style="width: 400px; flex: none; border-left: 1px solid #e3e0dc; background: #fff; align-self: stretch; overflow-y: auto; max-height: calc(100vh - 57px); position: sticky; top: 57px;">
+
+            <div style="position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e3e0dc; padding: 18px 26px 14px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+              <div>
+                <div style="font-family: inherit; font-size: 19px; line-height: 1.2;">Coding guidelines</div>
+                <div style="font-family: inherit; font-size: 10.5px; color: #a8a19a; margin-top: 4px;">v1.2 · SUS-24 codebook</div>
+              </div>
+              <button onClick="{{ onTogglePanel }}" style="border: none; background: none; color: #8a837c; font-size: 17px; cursor: pointer; line-height: 1;" style-hover="color: #1c1a18;">×</button>
+            </div>
+
+            <div style="padding: 22px 26px 120px;">
+
+              <section style="margin-bottom: 30px;">
+                <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px;">
+                  <span style="font-family: inherit; font-size: 11px; color: #a8a19a;">01</span>
+                  <h3 style="font-family: inherit; font-size: 17px; font-weight: 500; margin: 0;">Deciding relevance</h3>
+                </div>
+                <p style="font-family: inherit; font-size: 15px; line-height: 1.62; color: #38332e; margin: 0 0 12px;">A prompt is relevant when it names, requests, or constrains an outcome with a sustainability consequence: energy, resource use, wellbeing, cost, or the longevity of the system.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                  <div style="border-top: 2px solid #3d6b4f; padding-top: 8px;">
+                    <div style="font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #3d6b4f; margin-bottom: 5px;">Counts</div>
+                    <div style="font-size: 12.5px; line-height: 1.55; color: #57514b;">Stated goals, explicit constraints, consequences the prompt clearly implies.</div>
+                  </div>
+                  <div style="border-top: 2px solid #9a5b4f; padding-top: 8px;">
+                    <div style="font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #9a5b4f; margin-bottom: 5px;">Does not count</div>
+                    <div style="font-size: 12.5px; line-height: 1.55; color: #57514b;">A passing mention of a technology, or an effect you can only reach by speculation.</div>
+                  </div>
+                </div>
+              </section>
+
+              <section style="margin-bottom: 30px;">
+                <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px;">
+                  <span style="font-family: inherit; font-size: 11px; color: #a8a19a;">02</span>
+                  <h3 style="font-family: inherit; font-size: 17px; font-weight: 500; margin: 0;">The five dimensions</h3>
+                </div>
+                <div style="display: grid; gap: 0;">
+                  <sc-for list="{{ dimGuide }}" as="d" hint-placeholder-count="5">
+                    <div style="border-top: 1px solid #eae7e3; padding: 12px 0;">
+                      <div style="display: flex; align-items: baseline; gap: 9px;">
+                        <span style="font-family: inherit; font-size: 11.5px; font-weight: 500; color: #fff; background: #34506b; border-radius: 2px; padding: 3px 6px; flex: none;">{{ d.code }}</span>
+                        <span style="font-size: 13.5px; font-weight: 600;">{{ d.name }}</span>
+                      </div>
+                      <div style="font-family: inherit; font-size: 14.5px; line-height: 1.6; color: #38332e; margin-top: 7px;">{{ d.desc }}</div>
+                      <div style="font-size: 12.5px; line-height: 1.6; color: #6b645d; margin-top: 7px; padding-left: 11px; border-left: 2px solid #e3e0dc;">{{ d.example }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </section>
+
+              <section style="margin-bottom: 30px;">
+                <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px;">
+                  <span style="font-family: inherit; font-size: 11px; color: #a8a19a;">03</span>
+                  <h3 style="font-family: inherit; font-size: 17px; font-weight: 500; margin: 0;">Valence</h3>
+                </div>
+                <div style="display: grid; gap: 0;">
+                  <sc-for list="{{ valGuide }}" as="v" hint-placeholder-count="4">
+                    <div style="border-top: 1px solid #eae7e3; padding: 11px 0; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: start;">
+                      <div>
+                        <div style="font-family: inherit; font-size: 11.5px; color: #7a6a3c;">{{ v.code }}</div>
+                        <div style="font-size: 11.5px; color: #a8a19a; margin-top: 2px;">{{ v.name }}</div>
+                      </div>
+                      <div style="font-family: inherit; font-size: 14.5px; line-height: 1.6; color: #38332e;">{{ v.desc }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </section>
+
+              <section>
+                <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px;">
+                  <span style="font-family: inherit; font-size: 11px; color: #a8a19a;">04</span>
+                  <h3 style="font-family: inherit; font-size: 17px; font-weight: 500; margin: 0;">Decision rules</h3>
+                </div>
+                <div style="display: grid; gap: 11px;">
+                  <sc-for list="{{ ruleGuide }}" as="r" hint-placeholder-count="5">
+                    <div style="display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; align-items: baseline;">
+                      <span style="font-family: inherit; font-size: 11px; color: #a8a19a;">{{ r.n }}</span>
+                      <span style="font-family: inherit; font-size: 14.5px; line-height: 1.6; color: #38332e;">{{ r.text }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </section>
+
+            </div>
+          </aside>
+        </sc-if>
+      </div>
+
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ listOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 60; background: rgba(28,26,24,0.32); display: flex; justify-content: center; align-items: flex-start; padding: 56px 24px;">
+      <div style="width: 100%; max-width: 720px; background: #fbfaf9; border: 1px solid #d8d4cf; border-radius: 4px; max-height: calc(100vh - 112px); display: flex; flex-direction: column; box-shadow: 0 20px 50px rgba(28,26,24,0.18);">
+        <div style="padding: 16px 20px; border-bottom: 1px solid #e3e0dc; display: flex; align-items: center; gap: 16px;">
+          <div style="font-family: inherit; font-size: 17px;">All prompts</div>
+          <div style="font-family: inherit; font-size: 11.5px; color: #8a837c;">{{ codedCount }}/{{ totalCount }} coded</div>
+          <div style="flex: 1;"></div>
+          <button onClick="{{ onToggleList }}" style="border: none; background: none; color: #8a837c; font-size: 17px; cursor: pointer; line-height: 1;" style-hover="color: #1c1a18;">×</button>
+        </div>
+        <div style="overflow-y: auto; padding: 6px 0;">
+          <sc-for list="{{ listItems }}" as="it" hint-placeholder-count="8">
+            <button onClick="{{ it.onGo }}" style="width: 100%; display: grid; grid-template-columns: 74px minmax(0, 1fr) 132px; gap: 14px; align-items: center; text-align: left; padding: 10px 20px; border: none; border-bottom: 1px solid #efece8; background: {{ it.bg }}; cursor: pointer;" style-hover="background: #f2efeb;">
+              <span style="font-family: inherit; font-size: 12px; color: #1c1a18;">{{ it.id }}</span>
+              <span style="font-size: 13px; color: #57514b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ it.preview }}</span>
+              <span style="font-family: inherit; font-size: 11px; color: {{ it.statusColor }}; text-align: right;">{{ it.status }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ submitOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 70; background: rgba(28,26,24,0.32); display: grid; place-items: center; padding: 24px;">
+      <div style="width: 100%; max-width: 460px; background: #fbfaf9; border: 1px solid #d8d4cf; border-radius: 4px; padding: 26px; box-shadow: 0 20px 50px rgba(28,26,24,0.18);">
+        <div style="font-family: inherit; font-size: 22px; margin-bottom: 12px;">Submit your codings?</div>
+        <p style="font-size: 13.5px; line-height: 1.65; color: #57514b; margin: 0 0 6px;">You are submitting {{ totalCount }} coded prompts with {{ effectTotal }} recorded effects as {{ pidLabel }}.</p>
+        <p style="font-size: 13.5px; line-height: 1.65; color: #57514b; margin: 0 0 22px;">After submission the set becomes read-only and you cannot change your decisions.</p>
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+          <button onClick="{{ onCloseSubmit }}" style="padding: 10px 16px; font-size: 13.5px; border: 1px solid #d8d4cf; border-radius: 3px; background: #fff; color: #1c1a18; cursor: pointer;" style-hover="border-color: #1c1a18;">Keep editing</button>
+          <button onClick="{{ onSubmit }}" style="padding: 10px 18px; font-size: 13.5px; font-weight: 500; border: 1px solid #34506b; border-radius: 3px; background: #34506b; color: #fff; cursor: pointer;" style-hover="background: #1c1a18; border-color: #1c1a18;">Submit and finish</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+    <div style="min-height: 100vh; display: grid; place-items: center; padding: 48px 24px;">
+      <div style="max-width: 480px;">
+        <h1 style="font-family: inherit; font-size: 30px; font-weight: 400; line-height: 1.2; margin: 0 0 16px;">Thank you — your codings are recorded.</h1>
+        <p style="font-size: 14.5px; line-height: 1.7; color: #57514b; margin: 0 0 8px;">{{ totalCount }} prompts, {{ effectTotal }} effects, submitted as {{ pidLabel }}.</p>
+        <p style="font-size: 13px; line-height: 1.7; color: #8a837c; margin: 0;">You may close this window. Questions about the study can go to the address in your invitation email.</p>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showInlineCheatSheet&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Guidelines&quot;},&quot;guidelinesOpenByDefault&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Guidelines&quot;},&quot;effectRowsOnRelevant&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:1,&quot;min&quot;:1,&quot;max&quot;:4,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Coding&quot;}}">
+const TEXTS = [
+  ["Refactor this batch job so it only re-processes records changed since the last run instead of the full table every night.", ""],
+  ["Write a Python script that pulls the hourly carbon intensity of the local grid and delays non-urgent training jobs until intensity drops below a threshold.", ""],
+  ["Add pagination to the admin user list. It currently loads all 400k rows.", ""],
+  ["Our onboarding flow has 14 required fields. Rewrite it so a new user can finish in under a minute, and explain what you dropped and why.", ""],
+  ["Make this image pipeline serve WebP with responsive sizes so mobile users on metered connections download less data.", ""],
+  ["Convert the polling in this React hook to a websocket subscription.", "useEffect(() => {\n  const t = setInterval(() => fetch('/api/status').then(setStatus), 1000);\n  return () => clearInterval(t);\n}, []);"],
+  ["Help me write a deprecation plan for the v1 API so integrators have a year to migrate and our on-call load drops.", ""],
+  ["Add an offline mode to the field data collection app. Enumerators work in areas with no coverage for hours at a time.", ""],
+  ["Rewrite these error messages so they are readable by someone who is not a developer, and add screen reader labels to the form.", ""],
+  ["Set up autoscaling so the staging cluster scales to zero overnight and on weekends.", ""],
+  ["Generate unit tests for this module.", "def normalize(name):\n    return ' '.join(name.strip().split()).title()"],
+  ["Our team spends two days a month on manual release notes. Write a tool that drafts them from merged pull requests.", ""],
+  ["Review this Dockerfile and cut the image size. Builds take eleven minutes and the CI bill is getting attention from finance.", "FROM node:20\nCOPY . .\nRUN npm install\nCMD [\"node\", \"server.js\"]"],
+  ["Add a dark theme to the dashboard.", ""],
+  ["Write a migration that adds a soft-delete column and backfills it without locking the table during business hours.", ""],
+  ["Explain what this regular expression matches.", "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+)@(?:[a-z0-9-]+\\.)+[a-z]{2,}$"],
+  ["Build a queue so on-call engineers stop being paged for retryable failures at night.", ""],
+  ["Add a consent banner that stores no analytics identifiers until the user opts in.", ""],
+  ["Optimise this SQL query. It runs on every page load and does a full scan of a 90 million row table.", "SELECT * FROM events WHERE lower(source) = 'web' ORDER BY created_at DESC LIMIT 50;"],
+  ["Rename the variables in this function to something clearer for the next maintainer.", ""],
+  ["We want to run inference on-device rather than in the cloud so the app works on older phones and sends less telemetry. Sketch the approach.", ""],
+  ["Add a rate limiter to the public API to keep one bad client from degrading service for everyone else.", ""],
+  ["Write a cron job that emails me the daily signup count.", ""],
+  ["Replace the third-party charting library with a smaller one. The bundle is 1.4 MB and our users are mostly on 3G.", ""],
+  ["Document the architecture of this service so a new hire can be productive without shadowing someone for a week.", ""]
+];
+
+const DIMS = [
+  { code: "ENV", name: "Environmental", desc: "Effects on natural resources, energy or emissions caused by building or running the software.", example: "Scaling clusters to zero overnight reduces energy draw.", short: "Energy, resources, emissions" },
+  { code: "SOC", name: "Social", desc: "Effects on groups, communities, equity of access or shared trust.", example: "Offline support extends access to users without coverage.", short: "Communities, equity, access" },
+  { code: "IND", name: "Individual", desc: "Effects on a single person's wellbeing, autonomy, privacy or cognitive load.", example: "Fewer night pages protect on-call engineers.", short: "Wellbeing, privacy, load" },
+  { code: "ECO", name: "Economic", desc: "Effects on cost, revenue, viability or the value of invested effort.", example: "Smaller images cut the CI bill.", short: "Cost, viability, value" },
+  { code: "TEC", name: "Technical", desc: "Effects on the longevity, maintainability and adaptability of the system itself.", example: "A deprecation plan preserves integrator compatibility.", short: "Longevity, maintainability" }
+];
+
+const VALS = [
+  { code: "POS", name: "Positive", desc: "The prompt seeks or implies an improvement on that dimension.", short: "Improvement sought" },
+  { code: "NEG", name: "Negative", desc: "The prompt seeks or implies a worsening, or accepts one as a trade-off.", short: "Worsening or trade-off" },
+  { code: "MIX", name: "Mixed", desc: "The same effect is both an improvement and a worsening on that dimension.", short: "Both directions at once" },
+  { code: "CANT_TELL", name: "Cannot tell", desc: "A sustainability effect is present but its direction is not determinable from the prompt.", short: "Direction indeterminable" }
+];
+
+const RULES = [
+  { n: "1", text: "Code the prompt, not the likely response." },
+  { n: "2", text: "One row per distinct effect. Repeat a dimension if the prompt implies two separate effects on it." },
+  { n: "3", text: "Use MIX only when a single effect runs in both directions, not when two effects disagree." },
+  { n: "4", text: "Use CANT_TELL when the direction depends on context the prompt does not give, and add a note." },
+  { n: "5", text: "When torn between relevant and not relevant, mark relevant and record CANT_TELL." }
+];
+
+const pad = n => "P" + String(n).padStart(3, "0");
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const total = 100;
+    const prompts = [];
+    for (let i = 0; i < total; i++) {
+      const t = TEXTS[i % TEXTS.length];
+      prompts.push({ id: pad(i + 1), text: t[0], code: t[1] });
+    }
+    this.prompts = prompts;
+    this.state = {
+      screen: "login",
+      pid: "",
+      idx: 0,
+      codings: {},
+      panelOpen: !!props.guidelinesOpenByDefault,
+      cheatOpen: false,
+      listOpen: false,
+      submitOpen: false
+    };
+  }
+
+  cur() { return this.prompts[this.state.idx]; }
+
+  coding(id) {
+    return this.state.codings[id] || { relevance: null, effects: [], confirmed: false };
+  }
+
+  update(patch) {
+    const id = this.cur().id;
+    const next = Object.assign({}, this.coding(id), patch);
+    this.setState(s => ({ codings: Object.assign({}, s.codings, { [id]: next }) }));
+  }
+
+  setRelevance(r) {
+    const c = this.coding(this.cur().id);
+    const start = Math.max(1, this.props.effectRowsOnRelevant ?? 1);
+    let effects = c.effects;
+    if (r === "relevant" && effects.length === 0) {
+      effects = [];
+      for (let i = 0; i < start; i++) effects.push({ dim: "", val: "", note: "" });
+    }
+    this.update({ relevance: r, effects });
+  }
+
+  mutateEffects(fn) {
+    const c = this.coding(this.cur().id);
+    const effects = c.effects.map(e => Object.assign({}, e));
+    fn(effects);
+    this.update({ effects });
+  }
+
+  go(i) {
+    const idx = Math.min(this.prompts.length - 1, Math.max(0, i));
+    this.setState({ idx, listOpen: false });
+    if (typeof window !== "undefined") window.scrollTo(0, 0);
+  }
+
+  rowsValid() {
+    const c = this.coding(this.cur().id);
+    if (c.relevance === "not_relevant") return true;
+    if (c.relevance !== "relevant") return false;
+    return c.effects.length > 0 && c.effects.every(e => e.dim && e.val);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const cur = this.cur();
+    const c = this.coding(cur.id);
+    const total = this.prompts.length;
+    const coded = Object.keys(s.codings).filter(k => s.codings[k].confirmed).length;
+    const effectTotal = Object.keys(s.codings).reduce((n, k) => n + (s.codings[k].relevance === "relevant" ? s.codings[k].effects.length : 0), 0);
+    const relevant = c.relevance === "relevant";
+    const notRelevant = c.relevance === "not_relevant";
+    const valid = this.rowsValid();
+    const sel = { border: "#1c1a18", bg: "#1c1a18", color: "#fbfaf9" };
+    const unsel = { border: "#d8d4cf", bg: "#fff", color: "#1c1a18" };
+    const relS = relevant ? sel : unsel;
+    const nrS = notRelevant ? sel : unsel;
+
+    return {
+      isLogin: s.screen === "login",
+      isPurpose: s.screen === "purpose",
+      isCoding: s.screen === "coding",
+      isDone: s.screen === "done",
+      pid: s.pid,
+      pidLabel: s.pid ? s.pid : "—",
+      loginDisabled: s.pid.trim().length < 2,
+      onPid: e => this.setState({ pid: e.target.value }),
+      onLogin: () => { if (s.pid.trim().length >= 2) this.setState({ screen: "purpose" }); },
+      onStart: () => this.setState({ screen: "coding" }),
+      onOpenPanel: () => this.setState({ screen: "coding", panelOpen: true }),
+
+      currentId: cur.id,
+      currentText: cur.text,
+      currentCode: cur.code,
+      hasCode: !!cur.code,
+      positionLabel: (s.idx + 1) + " of " + total,
+      statusLabel: c.confirmed ? "confirmed" : (c.relevance ? "in progress" : "not coded"),
+
+      totalCount: total,
+      codedCount: coded,
+      remainingCount: total - coded,
+      progressWidth: Math.round((coded / total) * 100) + "%",
+      allCoded: coded === total,
+      effectTotal,
+
+      panelOpen: s.panelOpen,
+      panelButtonLabel: s.panelOpen ? "Hide guidelines" : "Guidelines",
+      onTogglePanel: () => this.setState(st => ({ panelOpen: !st.panelOpen })),
+      cheatEnabled: this.props.showInlineCheatSheet ?? true,
+      cheatOpen: s.cheatOpen,
+      cheatChevron: s.cheatOpen ? "–" : "+",
+      onToggleCheat: () => this.setState(st => ({ cheatOpen: !st.cheatOpen })),
+      cheatDims: DIMS,
+      cheatVals: VALS,
+      dimGuide: DIMS,
+      valGuide: VALS,
+      ruleGuide: RULES,
+
+      relevantBorder: relS.border, relevantBg: relS.bg, relevantColor: relS.color,
+      notRelevantBorder: nrS.border, notRelevantBg: nrS.bg, notRelevantColor: nrS.color,
+      onRelevant: () => this.setRelevance("relevant"),
+      onNotRelevant: () => this.setRelevance("not_relevant"),
+      showEffects: relevant,
+      isNotRelevant: notRelevant,
+      effectCountLabel: c.effects.length + (c.effects.length === 1 ? " effect" : " effects"),
+      rows: relevant ? c.effects.map((e, i) => ({
+        num: String(i + 1),
+        dim: e.dim, val: e.val, note: e.note,
+        onDim: ev => { const v = ev.target.value; this.mutateEffects(a => { a[i].dim = v; }); },
+        onVal: ev => { const v = ev.target.value; this.mutateEffects(a => { a[i].val = v; }); },
+        onNote: ev => { const v = ev.target.value; this.mutateEffects(a => { a[i].note = v; }); },
+        onRemove: () => this.mutateEffects(a => { a.splice(i, 1); })
+      })) : [],
+      onAddRow: () => this.mutateEffects(a => { a.push({ dim: "", val: "", note: "" }); }),
+
+      onPrev: () => this.go(s.idx - 1),
+      onNext: () => this.go(s.idx + 1),
+      prevDisabled: s.idx === 0,
+      nextDisabled: s.idx >= total - 1,
+      validationHint: c.relevance === null ? "Choose a relevance value to continue." : (!valid ? "Every effect row needs a dimension and a valence." : ""),
+      confirmDisabled: !valid,
+      confirmLabel: c.confirmed ? (s.idx >= total - 1 ? "Update coding" : "Update and continue") : (s.idx >= total - 1 ? "Confirm" : "Confirm and continue"),
+      confirmBorder: valid ? "#1c1a18" : "#e3e0dc",
+      confirmBg: valid ? "#1c1a18" : "#f2efeb",
+      confirmColor: valid ? "#fbfaf9" : "#a8a19a",
+      onConfirm: () => {
+        if (!valid) return;
+        this.update({ confirmed: true });
+        if (s.idx < total - 1) this.go(s.idx + 1);
+      },
+
+      listOpen: s.listOpen,
+      onToggleList: () => this.setState(st => ({ listOpen: !st.listOpen })),
+      listItems: this.prompts.map((p, i) => {
+        const pc = s.codings[p.id];
+        const done = pc && pc.confirmed;
+        const started = pc && pc.relevance && !done;
+        return {
+          id: p.id,
+          preview: p.text,
+          status: done ? (pc.relevance === "relevant" ? "coded · " + pc.effects.length + " eff." : "coded · not relevant") : (started ? "in progress" : "not coded"),
+          statusColor: done ? "#3d6b4f" : (started ? "#7a6a3c" : "#a8a19a"),
+          bg: i === s.idx ? "#f2efeb" : "transparent",
+          onGo: () => this.go(i)
+        };
+      }),
+
+      submitOpen: s.submitOpen,
+      onOpenSubmit: () => this.setState({ submitOpen: true }),
+      onCloseSubmit: () => this.setState({ submitOpen: false }),
+      onSubmit: () => this.setState({ submitOpen: false, screen: "done" })
+    };
+  }
+}
+</script>
+</body>
+</html>

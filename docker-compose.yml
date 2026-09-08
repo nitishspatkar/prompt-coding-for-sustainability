@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: coder
+      POSTGRES_PASSWORD: coder
+      POSTGRES_DB: prompt_coder
+    ports:
+      - "5433:5432"
+    volumes:
+      - prompt_coder_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U coder -d prompt_coder"]
+      interval: 3s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  prompt_coder_pg:
