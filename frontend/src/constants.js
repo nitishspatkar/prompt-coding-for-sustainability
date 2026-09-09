@@ -8,6 +8,39 @@ export function parsePromptText(text) {
   return { prose, code: match[1].replace(/\n$/, '') }
 }
 
+export const SE_ACTIVITIES = [
+  {
+    code: 'Requirements',
+    short: 'What the system should do',
+    desc: 'Gathering, clarifying, writing, or reviewing needs — user stories, specs, or what a feature should include.',
+  },
+  {
+    code: 'Design',
+    short: 'How it should be structured',
+    desc: 'Architecture, data models, interfaces, or choosing between approaches — how the system should be shaped.',
+  },
+  {
+    code: 'Construction',
+    short: 'Write or change code, config, or infrastructure',
+    desc: 'Building or changing the software itself — writing, fixing, or modifying code, configuration, or infrastructure.',
+  },
+  {
+    code: 'Testing',
+    short: 'Tests, coverage, or how to observe a failure',
+    desc: 'Checking that it works — writing tests or test cases, coverage, or how to observe or track a failure.',
+  },
+  {
+    code: 'Maintenance',
+    short: 'Adapt or repair software already live or in use',
+    desc: 'Work on something already built and in use — a live issue, a post-release adaptation, or getting it running in a new environment.',
+  },
+  {
+    code: 'Other',
+    short: 'No clear SE task (e.g. management, conceptual Q&A)',
+    desc: 'No clear software-engineering task — e.g. project management, process documentation, or a purely conceptual question.',
+  },
+]
+
 export const DIMS = [
   { code: 'ENV', name: 'Environmental', desc: 'Effects on natural resources, energy or emissions caused by building or running the software.', example: 'Scaling clusters to zero overnight reduces energy draw.', short: 'Energy, resources, emissions' },
   { code: 'SOC', name: 'Social', desc: 'Effects on groups, communities, equity of access or shared trust.', example: 'Offline support extends access to users without coverage.', short: 'Communities, equity, access' },

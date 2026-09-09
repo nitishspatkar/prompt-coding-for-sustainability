@@ -6,7 +6,7 @@ import {
   getPrompt,
   submitAll,
 } from '../api'
-import { DIMS, VALS, emptyEffect, parsePromptText } from '../constants'
+import { DIMS, VALS, SE_ACTIVITIES, emptyEffect, parsePromptText } from '../constants'
 import GuidelinesPanel from './GuidelinesPanel'
 import PromptListModal from './PromptListModal'
 import SubmitModal from './SubmitModal'
@@ -43,6 +43,7 @@ export default function CodingView({
   const [list, setList] = useState([])
   const [progress, setProgress] = useState({ total: 0, confirmed: 0, remaining: 0 })
   const [relevance, setRelevance] = useState(null)
+  const [seActivity, setSeActivity] = useState('')
   const [effects, setEffects] = useState([])
   const [cheatOpen, setCheatOpen] = useState(false)
   const [listOpen, setListOpen] = useState(false)
@@ -66,6 +67,7 @@ export default function CodingView({
   const applyPrompt = useCallback((data) => {
     setPrompt(data)
     setProgress(data.progress)
+    setSeActivity(data.se_activity || '')
     const rel = data.is_confirmed
       ? relevanceFromApi(data.effects, data.is_confirmed)
       : data.effects?.length
@@ -105,13 +107,15 @@ export default function CodingView({
   )
 
   const valid = useMemo(() => {
+    if (!seActivity) return false
     if (relevance === 'not_relevant') return true
     if (relevance !== 'relevant') return false
     return effects.length > 0 && effects.every((e) => e.dimension && e.valence)
-  }, [relevance, effects])
+  }, [seActivity, relevance, effects])
 
-  const validationHint =
-    relevance === null
+  const validationHint = !seActivity
+    ? 'Choose an SE activity to continue.'
+    : relevance === null
       ? 'Choose a relevance value to continue.'
       : !valid
         ? 'Every effect row needs a dimension and a valence.'
@@ -192,6 +196,7 @@ export default function CodingView({
       const payload = {
         participant_id: participantId,
         prompt_id: prompt.prompt_id,
+        se_activity: seActivity,
         is_relevant: relevance === 'relevant',
         effects:
           relevance === 'relevant'
@@ -318,6 +323,25 @@ export default function CodingView({
                     ) : null}
                   </div>
                 </article>
+
+                <div className="activity-block">
+                  <div className="section-label">SE activity</div>
+                  <label className="activity-field">
+                    <select
+                      value={seActivity}
+                      onChange={(e) => setSeActivity(e.target.value)}
+                      disabled={locked}
+                      aria-label="SE activity"
+                    >
+                      <option value="">— select —</option>
+                      {SE_ACTIVITIES.map((a) => (
+                        <option key={a.code} value={a.code}>
+                          {a.code} — {a.short}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
 
                 <div className="relevance-block">
                   <div className="section-label">Sustainability relevance</div>

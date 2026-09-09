@@ -3,9 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.database import Base, engine
+from app.migrate import ensure_schema
 from app.routers import admin, auth, prompts
 
 Base.metadata.create_all(bind=engine)
+ensure_schema()
 
 app = FastAPI(title="Sustainability Prompt Coder", version="1.0.0")
 

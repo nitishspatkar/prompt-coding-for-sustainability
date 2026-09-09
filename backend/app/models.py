@@ -55,6 +55,8 @@ class Assignment(Base):
     opened_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     confirmed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     is_confirmed: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    # SE activity — Coding Guidebook §5 (one activity per prompt)
+    se_activity: Mapped[str | None] = mapped_column(String, nullable=True)
 
     participant: Mapped["Participant"] = relationship(back_populates="assignments")
     prompt: Mapped["Prompt"] = relationship(back_populates="assignments")

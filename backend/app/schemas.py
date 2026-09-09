@@ -2,6 +2,15 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field
 
+SE_ACTIVITIES = (
+    "Requirements",
+    "Design",
+    "Construction",
+    "Testing",
+    "Maintenance",
+    "Other",
+)
+
 
 class LoginRequest(BaseModel):
     participant_id: str = Field(min_length=1)
@@ -28,6 +37,7 @@ class EffectIn(BaseModel):
 class ConfirmRequest(BaseModel):
     participant_id: str
     prompt_id: str
+    se_activity: str
     is_relevant: bool
     effects: list[EffectIn] = Field(default_factory=list)
 
@@ -48,6 +58,7 @@ class PromptOut(BaseModel):
     is_confirmed: bool
     opened_at: datetime | None = None
     confirmed_at: datetime | None = None
+    se_activity: str | None = None
     effects: list[EffectOut] = Field(default_factory=list)
     progress: "ProgressOut"
 
@@ -64,6 +75,7 @@ class PromptListItem(BaseModel):
     randomized_position: int
     is_confirmed: bool
     is_relevant: bool | None = None
+    se_activity: str | None = None
     effect_count: int = 0
     opened_at: datetime | None = None
 

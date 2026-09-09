@@ -386,8 +386,41 @@ button:disabled {
   margin-bottom: 10px;
 }
 
-.relevance-block {
+.activity-block {
   margin-top: 38px;
+}
+
+.field-help {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-4);
+}
+
+.activity-field {
+  display: grid;
+  gap: 5px;
+  max-width: 420px;
+}
+
+.activity-field span {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+}
+
+.activity-field select {
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid var(--line-2);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.relevance-block {
+  margin-top: 32px;
 }
 
 .relevance-toggles {

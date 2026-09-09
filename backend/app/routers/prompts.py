@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models import Assignment, Effect, Participant
 from app.schemas import (
+    SE_ACTIVITIES,
     ConfirmRequest,
     EffectOut,
     ProgressOut,
@@ -76,6 +77,7 @@ def _assignment_to_prompt_out(db: Session, assignment: Assignment) -> PromptOut:
         is_confirmed=assignment.is_confirmed,
         opened_at=assignment.opened_at,
         confirmed_at=assignment.confirmed_at,
+        se_activity=assignment.se_activity,
         effects=_effects_for(db, assignment.participant_id, assignment.prompt_id),
         progress=_progress(db, assignment.participant_id),
     )
@@ -144,6 +146,7 @@ def all_prompts(pid: str = Query(...), db: Session = Depends(get_db)) -> PromptL
                 randomized_position=a.randomized_position,
                 is_confirmed=a.is_confirmed,
                 is_relevant=is_relevant,
+                se_activity=a.se_activity,
                 effect_count=effect_count,
                 opened_at=a.opened_at,
             )
@@ -193,6 +196,12 @@ def confirm_prompt(body: ConfirmRequest, db: Session = Depends(get_db)) -> Promp
     )
     if assignment is None:
         raise HTTPException(status_code=404, detail="Prompt not assigned to participant")
+
+    if body.se_activity not in SE_ACTIVITIES:
+        raise HTTPException(
+            status_code=400,
+            detail=f"se_activity must be one of: {', '.join(SE_ACTIVITIES)}",
+        )
 
     if body.is_relevant:
         if not body.effects:
@@ -246,6 +255,7 @@ def confirm_prompt(body: ConfirmRequest, db: Session = Depends(get_db)) -> Promp
         assignment.opened_at = now
     assignment.confirmed_at = now
     assignment.is_confirmed = True
+    assignment.se_activity = body.se_activity
     db.commit()
     db.refresh(assignment)
     return _assignment_to_prompt_out(db, assignment)

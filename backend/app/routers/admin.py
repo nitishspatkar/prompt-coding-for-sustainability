@@ -56,9 +56,14 @@ def admin_overview(key: str = Query(...), db: Session = Depends(get_db)) -> Admi
 def export_effects(key: str = Query(...), db: Session = Depends(get_db)) -> StreamingResponse:
     _check_key(key)
     rows = (
-        db.query(Effect, Participant, Prompt)
+        db.query(Effect, Participant, Prompt, Assignment)
         .join(Participant, Effect.participant_id == Participant.participant_id)
         .join(Prompt, Effect.prompt_id == Prompt.prompt_id)
+        .join(
+            Assignment,
+            (Assignment.participant_id == Effect.participant_id)
+            & (Assignment.prompt_id == Effect.prompt_id),
+        )
         .order_by(Effect.participant_id, Effect.prompt_id, Effect.effect_id)
         .all()
     )
@@ -74,13 +79,14 @@ def export_effects(key: str = Query(...), db: Session = Depends(get_db)) -> Stre
             "prompt_id",
             "prompt_text",
             "order_index",
+            "se_activity",
             "is_relevant",
             "dimension",
             "valence",
             "coder_note",
         ]
     )
-    for effect, participant, prompt in rows:
+    for effect, participant, prompt, assignment in rows:
         writer.writerow(
             [
                 effect.effect_id,
@@ -90,6 +96,7 @@ def export_effects(key: str = Query(...), db: Session = Depends(get_db)) -> Stre
                 effect.prompt_id,
                 prompt.prompt_text,
                 prompt.order_index,
+                assignment.se_activity or "",
                 effect.is_relevant,
                 effect.dimension or "",
                 effect.valence or "",

@@ -1,4 +1,4 @@
-import { DIMS, VALS, RULES } from '../constants'
+import { DIMS, VALS, RULES, SE_ACTIVITIES } from '../constants'
 
 export default function GuidelinesPanel({ onClose }) {
   return (
@@ -6,7 +6,7 @@ export default function GuidelinesPanel({ onClose }) {
       <div className="guidelines-head">
         <div>
           <div className="guidelines-title">Coding guidelines</div>
-          <div className="guidelines-version">v1.2 · SUS-24 codebook</div>
+          <div className="guidelines-version">Guidebook v1.1</div>
         </div>
         <button type="button" className="close-x" onClick={onClose} aria-label="Close">
           ×
@@ -14,6 +14,28 @@ export default function GuidelinesPanel({ onClose }) {
       </div>
 
       <div className="guidelines-body">
+        <section className="guide-section">
+          <div className="guide-section-head">
+            <span className="guide-num">00</span>
+            <h3>SE activity</h3>
+          </div>
+          <p>
+            Assign exactly one activity for the primary request in the prompt — even when the
+            prompt is not sustainability-relevant. If more than one activity seems present, pick
+            the main ask.
+          </p>
+          <div className="dim-item" style={{ borderTop: 'none', paddingTop: 0 }}>
+            {SE_ACTIVITIES.map((a) => (
+              <div className="cheat-row" key={a.code} style={{ marginBottom: 10, alignItems: 'flex-start' }}>
+                <span className="cheat-code-dim" style={{ width: 110, flexShrink: 0 }}>
+                  {a.code}
+                </span>
+                <span className="cheat-desc">{a.desc}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="guide-section">
           <div className="guide-section-head">
             <span className="guide-num">01</span>
