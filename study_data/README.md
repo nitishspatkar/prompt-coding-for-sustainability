@@ -19,4 +19,15 @@ Short overview of how we picked the 100 prompts in this folder.
 7. **Add a few more “requirements”-like prompts** — that type was rare after step 6.
 
 8. **Freeze 100** into `prompts_eval_v1.csv` (ids `E001`–`E100`). Random seed for the final draw: `20262934`.  
-   `prompts_eval_v1.meta.json` stores extra info (e.g. original DevGPT link). The coding tool only needs the CSV; `reserved_ids.json` is for transparency / replication of the hold-out.
+   `prompts_eval_v1.meta.json` stores extra info (e.g. original DevGPT link). The coding tool only needs the CSV that matches the mode you are running; `reserved_ids.json` is for transparency / replication of the hold-out.
+
+## Pilot subset (`prompts_pilot_v1.csv`)
+
+For **tool and end-to-end workflow testing** (not a second evaluation sample):
+
+- **N = 20** rows drawn from the frozen 100.
+- Stratified by `activity_triage` (at least one per activity, then proportional fill; largest remainder).
+- Selection seed: `20260909`.
+- Ids and composition are recorded in [`prompts_pilot_v1.meta.json`](prompts_pilot_v1.meta.json).
+
+Use the pilot CSV with `./scripts/up-pilot.sh`; use the full eval CSV with `./scripts/up-study.sh`.

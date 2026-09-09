@@ -1,0 +1,394 @@
+prompt_id,prompt_text
+E002,Kotlin how to add internal app certificate
+E003,"def cosine_annealing_lr(lr, step_count, T_max, eta_min = 0):
+    lr = eta_min + (lr - eta_min) * (1 + math.cos(math.pi * step_count / T_max)) / (1 + math.cos(math.pi * (step_count - 1) / T_max))
+    return lr
+rewrite it in rust"
+E014,"<div class=""form-group"">
+      <label for=""image_file"">Image</label>
+      <input id=""image_file"" name=""image_file"" type=""file"" class=""form-control-lg""
+        style=""width: max-content;"" />
+      <!-- 画像があれば縮小して表示 -->
+      <img th:if=""${app.image != null && app.image != ''}"" th:src=""*{image}"" th:alt=""現在の画像"" width=""200"" height=""200"" />
+      <input id=""image"" name=""image"" type=""hidden"" th:field=""*{image}"" />
+    </div>
+LabelとInputを縦並びにしたい"
+E021,"Why get this error:
+2023-09-28 12:24:51,177 - INFO - ingest.py:121 - Loading documents from D:\LGPT\localGPT/SOURCE_DOCUMENTS
+WARNING:pdfminer.pdfpage:The PDF <_io.BufferedReader name='D:\\LGPT\\localGPT/SOURCE_DOCUMENTS\\Pharmacognosy 1.pdf'> contains a metadata field indicating that it should not allow text extraction. Ignoring this field and proceeding. Use the check_extractable if you want to raise an error in this case
+2023-09-28 12:29:43,373 - INFO - ingest.py:130 - Loaded 65 documents from D:\LGPT\localGPT/SOURCE_DOCUMENTS
+2023-09-28 12:29:43,373 - INFO - ingest.py:131 - Split into 47746 chunks of text
+2023-09-28 12:29:45,108 - INFO - SentenceTransformer.py:66 - Load pretrained SentenceTransformer: hkunlp/instructor-large
+load INSTRUCTOR_Transformer
+max_seq_length  512
+Traceback (most recent call last):
+  File ""D:\LGPT\localGPT\ingest.py"", line 159, in <module>
+    main()
+  File ""C:\Users\opd\anaconda3\envs\localGPT\lib\site-packages\click\core.py"", line 1157, in __call__
+    return self.main(*args, **kwargs)
+  File ""C:\Users\opd\anaconda3\envs\localGPT\lib\site-packages\click\core.py"", line 1078, in main
+    rv = self.invoke(ctx)
+  File ""C:\Users\opd\anaconda3\envs\localGPT\lib\site-packages\click\core.py"", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File ""C:\Users\opd\anaconda3\envs\localGPT\lib\site-packages\click\core.py"", line 783, in invoke
+    return __callback(*args, **kwargs)
+  File ""D:\LGPT\localGPT\ingest.py"", line 145, in main
+    db = Chroma.from_documents(
+  File ""C:\Users\opd\anaconda3\envs\localGPT\lib\site-packages\langchain\vectorstores\chroma.py"", line 613, in from_documents
+    return cls.from_texts(
+  File ""C:\Users\opd\anaconda3\envs\localGPT\lib\site-packages\langchain\vectorstores\chroma.py"", line 577, in from_texts
+    chroma_collection.add_texts(texts=texts, metadatas=metadatas, ids=ids)
+  File ""C:\Users\opd\anaconda3\envs\localGPT\lib\site-packages\langchain\vectorstores\chroma.py"", line 209, in add_texts
+    self._collection.upsert(
+  File ""C:\Users\opd\anaconda3\envs\localGPT\lib\site-packages\chromadb\api\models\Collection.py"", line 298, in upsert
+    self._client._upsert(
+  File ""C:\Users\opd\anaconda3\envs\localGPT\lib\site-packages\chromadb\api\segment.py"", line 290, in _upsert
+    self._producer.submit_embeddings(coll[""topic""], records_to_submit)
+  File ""C:\Users\opd\anaconda3\envs\localGPT\lib\site-packages\chromadb\db\mixins\embeddings_queue.py"", line 145, in submit_embeddings
+    results = cur.execute(sql, params).fetchall()
+sqlite3.OperationalError: too many SQL variables"
+E026,"what does:
+
+            text = example.get(""text"", """") or """"
+do python?"
+E032,"I want you to act as an AWS engineer. Create a Lambda container image that does the following:
+
+
+**Objective**
+Currently we lose some time by trying to test/use features before they are ready. To make sure everyone is aware when and what was deployed, we need a bot to send a Tribe message for key events in the deployment pipeline.
+
+**Our deployment pipeline consist of:**
+1 - Push branch to Github
+2 - Github Actions runs tests
+3 - At the same time, [CodePipeline](https://aws.amazon.com/codepipeline/) triggers a deployment but there's a ""manual review"" that the deployment will get stuck on until Github Actions finishes.
+4 - If the Github Actions tests run successfully, we ""approve"" the manual review from CodePipeline for deployment.
+5 - Branch is deployed
+
+
+**The Task**
+Create a Lambda function which is triggered by CodePipeline that sends the following Request to post a message, modifying the content based on the following events:
+- [ ] A deployment has been triggered (indicate staging or production)
+- [ ] A deployment has failed due to tests failing
+- [ ] A deployment test's are successful
+- [ ] A deployment has been successfully approved for deployment
+- [ ] A deployment has been finalized
+
+Sample Bot Message
+```
+curl --location 'https://proxy.sphinx.chat/action' \
+--header 'Content-Type: application/json' \
+--data '{
+    ""action"": ""broadcast"",
+    ""bot_id"": ""FB0E97331F76A090B299BD6A"",
+    ""bot_secret"": ""FC7157E5FF5AE74F33D45CEA81495550"",
+    ""chat_uuid"": ""ZWDd5CA3QK5xbZ08LNCGfyKzuKFBcPwVBUmFDGI1cup1q8ELcFTL1SgevQ6r5FEP0PXKlW14DZAszHdzPu8pNDmsaF_s"",
+    ""content"": ""beep boop""
+}'
+```
+
+This will post a message to a test Tribe we have set up.
+
+To join the test Tribe, you can use the following Tribe link in Sphinx: `sphinx.chat://?action=tribe&uuid=ZWDd5CA3QK5xbZ08LNCGfyKzuKFBcPwVBUmFDGI1cup1q8ELcFTL1SgevQ6r5FEP0PXKlW14DZAszHdzPu8pNDmsaF_s&host=tribes.sphinx.chat`
+
+**Delieverables**
+- [ ] AWS Lambda package that posts messages based on the above 5 events"
+E038,"I would like you to solve the following issue in my github repository:
+
+> Add a data loader class to allow loading the GTD model classes from a YAML file. The loader should also support some semantic validations on the loaded data, and should allow specifying all of the desired GTD state in a single YAML.
+
+You have the following options, please choose one. Please only answer with the number of the option you choose:
+
+1. Edit one or more existing files in the codebase
+2. Create one or more new files in the codebase
+"
+E046,"I wish that in typescript I could mark a function as ""throws"" and then when calling that function, there is a build error (or warning) that says there is an unhandled exception. Are there any packages in node (or native typescript) that could accomplish this?"
+E049,"So, my organization is maintaining a catalog of datascience oriented Docker images like Jupyter Notbook, RStudio, VScode and such.  
+Theses image a build again every week and are very big.  
+The goals of theses images is mainly to be used on datacenters.  
+
+How relevend do you think it is to build thoses image for linux/arm64, currently they are only build for linux/amd64.  
+Like I know there's the RaspberyPI and recent apple computer that uses this architecture but beside that?  
+We're wondering about the environemental impact of doubling our computation load and uploading two times more images to dockerhub. It's not a matter of price.  
+
+What do you think? We want to align with common practices with other actors that publish the same kind of images we do. "
+E050,Are there any risks / trade-offs involved with setting SO_REUSEADDR on outgoing TCP connection sockets underlying an HTTP client? I've used that socket option for incoming connections but never for outgoing.
+E055,"Using docker compose I get the following (using docker container inspect):
+
+""Dns"": [], ""DnsOptions"": [], ""DnsSearch"": [],
+
+However, the container created this way cannot talk to the internet. When I create the container individually via a QNAP GUI, I get the following (using docker container inspect):
+
+""Dns"": null, ""DnsOptions"": null, ""DnsSearch"": null,
+
+Not sure how an empty set [] is different than a null, but perhaps it's a nuance. Nor do I know where I can change the one built by compose so it is also null."
+E058,"help me understand why the github action to deploy mkdocs site is failing
+
+5s
+Run pip install --upgrade pip && pip install mkdocs
+Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.12.0/x64/lib/python3.12/site-packages (23.2.1)
+Collecting pip
+  Downloading pip-23.3.1-py3-none-any.whl.metadata (3.5 kB)
+Downloading pip-23.3.1-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 44.3 MB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 23.2.1
+    Uninstalling pip-23.2.1:
+      Successfully uninstalled pip-23.2.1
+Successfully installed pip-23.3.1
+Collecting mkdocs
+  Downloading mkdocs-1.5.3-py3-none-any.whl.metadata (6.2 kB)
+Collecting click>=7.0 (from mkdocs)
+  Downloading click-8.1.7-py3-none-any.whl.metadata (3.0 kB)
+Collecting ghp-import>=1.0 (from mkdocs)
+  Downloading ghp_import-2.1.0-py3-none-any.whl (11 kB)
+Collecting jinja2>=2.11.1 (from mkdocs)
+  Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 6.9 MB/s eta 0:00:00
+Collecting markdown>=3.2.1 (from mkdocs)
+  Downloading Markdown-3.5.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting markupsafe>=2.0.1 (from mkdocs)
+  Downloading MarkupSafe-2.1.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.9 kB)
+Collecting mergedeep>=1.3.4 (from mkdocs)
+  Downloading mergedeep-1.3.4-py3-none-any.whl (6.4 kB)
+Collecting packaging>=20.5 (from mkdocs)
+  Downloading packaging-23.2-py3-none-any.whl.metadata (3.2 kB)
+Collecting pathspec>=0.11.1 (from mkdocs)
+  Downloading pathspec-0.11.2-py3-none-any.whl.metadata (19 kB)
+Collecting platformdirs>=2.2.0 (from mkdocs)
+  Downloading platformdirs-3.11.0-py3-none-any.whl.metadata (11 kB)
+Collecting pyyaml-env-tag>=0.1 (from mkdocs)
+  Downloading pyyaml_env_tag-0.1-py3-none-any.whl (3.9 kB)
+Collecting pyyaml>=5.1 (from mkdocs)
+  Downloading PyYAML-6.0.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Collecting watchdog>=2.0 (from mkdocs)
+  Downloading watchdog-3.0.0-py3-none-manylinux2014_x86_64.whl (82 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 82.1/82.1 kB 24.0 MB/s eta 0:00:00
+Collecting python-dateutil>=2.8.1 (from ghp-import>=1.0->mkdocs)
+  Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.7/247.7 kB 61.4 MB/s eta 0:00:00
+Collecting six>=1.5 (from python-dateutil>=2.8.1->ghp-import>=1.0->mkdocs)
+  Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+Downloading mkdocs-1.5.3-py3-none-any.whl (3.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.7/3.7 MB 119.2 MB/s eta 0:00:00
+Downloading click-8.1.7-py3-none-any.whl (97 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.9/97.9 kB 27.6 MB/s eta 0:00:00
+Downloading Markdown-3.5.1-py3-none-any.whl (102 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 102.2/102.2 kB 33.1 MB/s eta 0:00:00
+Downloading MarkupSafe-2.1.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (28 kB)
+Downloading packaging-23.2-py3-none-any.whl (53 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 53.0/53.0 kB 17.7 MB/s eta 0:00:00
+Downloading pathspec-0.11.2-py3-none-any.whl (29 kB)
+Downloading platformdirs-3.11.0-py3-none-any.whl (17 kB)
+Downloading PyYAML-6.0.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (724 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 725.0/725.0 kB 86.9 MB/s eta 0:00:00
+Installing collected packages: watchdog, six, pyyaml, platformdirs, pathspec, packaging, mergedeep, markupsafe, markdown, click, pyyaml-env-tag, python-dateutil, jinja2, ghp-import, mkdocs
+Successfully installed click-8.1.7 ghp-import-2.1.0 jinja2-3.1.2 markdown-3.5.1 markupsafe-2.1.3 mergedeep-1.3.4 mkdocs-1.5.3 packaging-23.2 pathspec-0.11.2 platformdirs-3.11.0 python-dateutil-2.8.2 pyyaml-6.0.1 pyyaml-env-tag-0.1 six-1.16.0 watchdog-3.0.0
+Traceback (most recent call last):
+  File ""/home/runner/work/CivicTechJobs/CivicTechJobs/mkdocs/mkdocs-config/setup.py"", line 1, in <module>
+    from setuptools import setup
+ModuleNotFoundError: No module named 'setuptools'
+Error: Process completed with exit code 1."
+E071,"I need to do a project in c++ and this is the prompt, can you help me with any ideas for this: Use ChatGPT (or some similar AI system) to generate code for a medium sized project. The project should be large enough that you need to go back and forth with the system a number of times to produce the final product. Now, do a careful code review about what about this code worked, what did not work, and how the code could have been better written in regards to style, efficiency, modularity, and/or readability. Provide any other comments that you may have about this experience.
+
+"
+E075,"translate these uzbek colors. are they all valid colors?
+
+'binofsha',
+  'buniq',
+  'fayruz rang',
+  ""ko'k"",
+  ""ko'k-binofsha rang"",
+  'krem rang',
+  'kulrang',
+  'kumush rang',
+  'limon rang',
+  'moviy',
+  'oq',
+  'osmon rang',
+  'oltin rang',
+  'pushti',
+  'qizil',
+  'qizil-kulrang',
+  'qizil-siyoh binofsha',
+  ""qizg'ish to'q sariq"",
+  'qora',
+  'sariq',
+  'sariq-kulrang',
+  'siyoh binofsha',
+  'siyoh binofsha rang',
+  ""to'q sariq"",
+  'yashil',
+  'zaytun rang',"
+E076,"I have this markdown, I want to change the intro line to the list so there's not as much duplication with the title line, please give me 5 alternatives
+
+## What happens when the Bench Master is not available?
+
+It's important to have a backup Bench Master in case the Bench Master is not available. 
+
+- The backup Bench Master should be someone who is familiar with the internal projects and the skills of the developers. 
+- A semi-regular catchup between the Bench Master and the backup Bench Master would be a good idea to ensure that the backup Bench Master is up to date with the current state of the bench.
+- Always CC a distribution list that has the Bench Master and backup Bench Master on any emails regarding the bench.
+- If the Bench Master knows they will be unavailable for a period of time they should ask the backup Bench Master to monitor the distribution list for any emails regarding the bench.
+
+::: info
+**Tip:** If you have multiple offices, consider having a backup Bench Master that covers each timezone you have an office location
+:::"
+E078,"I'm designing a social-feature websites the partially improve the social ability feature of GitHub.
+
+Named ""Who's the OG"", OG means original gangster, here it means those project early finder.
+
+
+Some raw system requirements and behaviors:
+
+- A crawler utilizes GitHub stargazers API
+- A Backend that stores those crawl information
+- A frontend for displaying
+- User will use GitHub OAuth to login to this web service
+- When user request for one repository data, if there's no crawled data, it will trigger and scheduled a crawling task for that repository, then display WIP status in the frontend
+
+---
+
+GitHub stargazers's API:
+
+```javascript
+// Octokit.js // https://github.com/octokit/core.js#readme const octokit = new Octokit({ auth: 'YOUR-TOKEN' }) await octokit.request('GET /repos/{owner}/{repo}/stargazers', { owner: 'OWNER', repo: 'REPO', headers: { 'X-GitHub-Api-Version': '2022-11-28' } })
+
+// and sample response
+
+`Status: 200`
+
+`[ { ""login"": ""octocat"", ""id"": 1, ""node_id"": ""MDQ6VXNlcjE="", ""avatar_url"": ""https://github.com/images/error/octocat_happy.gif"", ""gravatar_id"": """", ""url"": ""https://api.github.com/users/octocat"", ""html_url"": ""https://github.com/octocat"", ""followers_url"": ""https://api.github.com/users/octocat/followers"", ""following_url"": ""https://api.github.com/users/octocat/following{/other_user}"", ""gists_url"": ""https://api.github.com/users/octocat/gists{/gist_id}"", ""starred_url"": ""https://api.github.com/users/octocat/starred{/owner}{/repo}"", ""subscriptions_url"": ""https://api.github.com/users/octocat/subscriptions"", ""organizations_url"": ""https://api.github.com/users/octocat/orgs"", ""repos_url"": ""https://api.github.com/users/octocat/repos"", ""events_url"": ""https://api.github.com/users/octocat/events{/privacy}"", ""received_events_url"": ""https://api.github.com/users/octocat/received_events"", ""type"": ""User"", ""site_admin"": false } ]`
+```
+
+
+---
+
+First try to organize parts that will be used in the system, and explain their requirements repsectively."
+E080,"Help me design some rust code for no-std that supports the following.
+
+# High level description
+
+Rotations are a key component of attitude and orientation parameters. At first, ANISE only supports Direct Cosine Matrix math. This is a redundant representation of rotations and therefore not an optimal one.
+
+The purpose of this issue is to design and implement a _correct_ SO(3) group for use in ANISE. Currently, work by Greg and Chris in commit 04b719f76a36d97be31941e4480f2da6a18c1381, have an early draft of what is needed for rotations in src/math/rotation/mod.rs.
+
+Some useful resources:
++ [Wikipedia on SO(3)](https://en.wikipedia.org/wiki/3D_rotation_group)
++ [RigidBodyKinematic.py](https://bitbucket.org/avslab/basilisk/src/develop/src/utilities/RigidBodyKinematics.py) is Basilisk's set of conversions between different attitude representations
++ [Sophus (C++)](https://github.com/strasdat/Sophus) is a Lie group implementation in C++
++ [Mathoverflow](https://mathoverflow.net/questions/81247/what-is-the-structure-of-so3-and-its-lie-algebra)
++ [PyQuat](https://github.com/translunar/pyquat) is an excellent resource for quaternion math (uses the Shulster notation)
++ [This PDF](https://github.com/nurlanov-zh/so3_log_map/blob/main/SO3_transformations.pdf) seems to provide good information on how to derive different representations.
+
+# Requirements
+
+1. Rotation structures shall be [composable](https://en.wikipedia.org/wiki/Function_composition)
+   1. Composition between different representations shall be supported
+   2. Composition between different representations shall use the most efficient calculation that maintains accuracy (efficient as ""least number of instructions"", as determined by iai/cachegrind)
+2. Rotations shall check the source and destination frames to prevent invalid rotations (this can probably not be done at compile time)
+3. The following representations shall be supported at a minimum:
+   1. Direct Cosine Matrix (DCM)
+   2. Quaternions shall be supported in their ""natural"" form (i, j, k, scalar), but a conversion to and from Shuster notation shall also be supported (https://possiblywrong.wordpress.com/2021/05/10/beware-the-natural-quaternion/)
+   3. Modified Rodrigez Parameters (cf. [Springer](https://link.springer.com/article/10.1007/s10851-017-0765-x) and [Schaub](http://hanspeterschaub.info/PapersPrivate/OKeefe2014a.pdf))
+   4. Representations shall be unambiguous on initialization and getters (e.g. a quaterion shall not be publicly indexable because that's confusion to the user who might not remember the storage order)
+4. All representations shall provide relevant helpers
+   1. Quaternions shall provide at a minimum a conjugate function and a ""short direction"" function
+   2. MRPs shall provide at a minimum a shadow set representation
+5. All computations shall be checked for math domain errors and return `AniseError::MathError` where relevant.
+6. All representation shall allow for rotation of both vectors and matrices (and ensure that matrices are rotated using `C^T * A * C`)
+7. _More? Should we this also provide the time-derivatives of each representation? That could be useful)"
+E087,"I need some unit tests created for my code using Jest. An example of a very basic test is this:
+import { describe, expect, test } from '@jest/globals';
+
+describe('user test', () => {
+  test('should return true', () => {
+    const result = 1 + 2;
+    expect(result).toBe(3);
+  });
+});
+
+
+
+
+ I need to test the routes I have created for markers, and to test the MarkerController.ts functions.
+
+Here is the Marker.ts route:
+import express from 'express';
+import * as markerController from '../controllers/MarkerController';
+import { validateToken } from '../middlewares';
+
+const router = express.Router();
+
+// define routes
+router.get('/', validateToken, markerController.getMarkers);
+
+router.post('/', validateToken, markerController.saveMarker);
+
+router.delete('/', validateToken, markerController.deleteMarker);
+
+export default router; 
+
+
+
+Here is the MarkerController.ts:
+import { Request, Response } from 'express';
+import Marker from '../models/Marker';
+
+// GET endpoint to retrieve all markers with longitude and latitude
+export const getMarkers = async (req: Request, res: Response) => {
+    try {
+        // Retrieve all markers from the database with projection to include only longitude and latitude
+        const markers = await Marker.find({}, 'longitude latitude');
+        return res.status(200).json(markers); // Return retrieved markers as JSON response
+    } catch (err) {
+        console.error('Could not get markers: ', err);
+        return res.status(500).json({ message: 'Could not get markers' }); // Handle errors gracefully
+    }
+};
+
+// POST endpoint to save a marker to the database
+export const saveMarker = async (req: Request, res: Response) => {
+    const { longitude, latitude } = req.body;
+
+    // Check if longitude and latitude are provided
+    if (!longitude || !latitude) {
+        return res.status(400).json({ message: 'Longitude and Latitude are required' });
+    }
+
+    try {
+        // Create a new marker instance and save it to the database
+        const newMarker = new Marker({ longitude, latitude });
+        await newMarker.save();
+        res.status(201).json({ message: 'Marker saved successfully', marker: newMarker }); // Respond with success message and saved marker
+    } catch (err) {
+        console.error('Could not save marker: ', err);
+        res.status(500).json({ message: 'Could not save marker' }); // Handle errors gracefully
+    }
+};
+
+// DELETE endpoint to delete a marker by Longitude and Latitude
+export const deleteMarker = async (req: Request, res: Response) => {
+    const { longitude, latitude } = req.body;
+
+    // Check if longitude and latitude are provided
+    if (!longitude || !latitude) {
+        return res.status(400).json({ message: 'Longitude and Latitude are required' });
+    }
+
+    try {
+        // Find and delete a marker by longitude and latitude
+        await Marker.findOneAndDelete({ longitude, latitude });
+        res.status(200).json({ message: 'Marker deleted successfully' }); // Respond with success message
+    } catch (err) {
+        console.error('Could not delete user: ', err);
+        res.status(500).json({ message: 'Could not delete user' }); // Handle errors gracefully
+    }
+};"
+E090,Using Playwright pytest Python I want a test that fails if the JavaScript console shows any errors
+E099,"when using activerecord-multi-tenant library in my rails  project, filters does not work. I prepared a fix and now I want to unit test it to see that fix is actually working.  
+My non-working code block is as below (not filtering secret values in logs)
+Rails.application.config.filter_parameters += [
+  :passw, :secret, :token, :_key, :crypt, :salt, :certificate, :otp, :ssn
+]
+Can you give me a unit test to test this issue?"

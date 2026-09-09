@@ -6,7 +6,7 @@ services:
       POSTGRES_PASSWORD: coder
       POSTGRES_DB: prompt_coder
     ports:
-      - "5433:5432"
+      - "${DB_PORT:-5433}:5432"
     volumes:
       - prompt_coder_pg:/var/lib/postgresql/data
     healthcheck:
@@ -26,7 +26,7 @@ services:
       - ./backend/data:/app/data
       - ./study_data:/study_data:ro
     ports:
-      - "8000:8000"
+      - "${BACKEND_PORT:-8000}:8000"
     depends_on:
       db:
         condition: service_healthy
@@ -34,7 +34,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "8080:80"
+      - "${FRONTEND_PORT:-8080}:80"
     depends_on:
       - backend
 

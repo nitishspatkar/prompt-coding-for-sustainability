@@ -1,0 +1,4 @@
+# Pilot participant IDs (one per line). Separate from study IDs.
+P-PILOT-01
+P-PILOT-02
+P-PILOT-03

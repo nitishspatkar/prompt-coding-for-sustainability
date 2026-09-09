@@ -1,0 +1,140 @@
+{
+  "version": "pilot_v1",
+  "n": 20,
+  "source": "prompts_eval_v1.csv",
+  "selection_seed": 20260909,
+  "method": "stratified_by_activity_triage_min1_then_proportional_largest_remainder",
+  "composition": {
+    "Construction": 6,
+    "Design": 4,
+    "Maintenance": 2,
+    "Other": 3,
+    "Requirements": 2,
+    "Testing": 3
+  },
+  "prompt_ids": [
+    "E002",
+    "E003",
+    "E014",
+    "E021",
+    "E026",
+    "E032",
+    "E038",
+    "E046",
+    "E049",
+    "E050",
+    "E055",
+    "E058",
+    "E071",
+    "E075",
+    "E076",
+    "E078",
+    "E080",
+    "E087",
+    "E090",
+    "E099"
+  ],
+  "items": [
+    {
+      "prompt_id": "E002",
+      "share_url_id": "09cadb9f-216b-4a4e-877e-611661044b14",
+      "activity_triage": "Construction"
+    },
+    {
+      "prompt_id": "E003",
+      "share_url_id": "1adcedee-7c58-4583-88dc-f504b80fce6b",
+      "activity_triage": "Construction"
+    },
+    {
+      "prompt_id": "E014",
+      "share_url_id": "703faefe-0bc8-49d0-b824-ee85490db1de",
+      "activity_triage": "Construction"
+    },
+    {
+      "prompt_id": "E021",
+      "share_url_id": "93ed3d48-2e8e-41da-8397-17bcc9b4672c",
+      "activity_triage": "Construction"
+    },
+    {
+      "prompt_id": "E026",
+      "share_url_id": "bead51fe-2acf-4f05-b8f7-b849134bbfd4",
+      "activity_triage": "Construction"
+    },
+    {
+      "prompt_id": "E032",
+      "share_url_id": "ed86d87e-1d10-4a19-a999-4463575ba656",
+      "activity_triage": "Construction"
+    },
+    {
+      "prompt_id": "E038",
+      "share_url_id": "2f9ae3a3-89f3-4242-8c1c-342bcb54a554",
+      "activity_triage": "Design"
+    },
+    {
+      "prompt_id": "E046",
+      "share_url_id": "8354ae88-a968-41c8-ab9a-eec8a23fa5ef",
+      "activity_triage": "Design"
+    },
+    {
+      "prompt_id": "E049",
+      "share_url_id": "b2b52991-dbfb-464f-8891-0a71455624b2",
+      "activity_triage": "Design"
+    },
+    {
+      "prompt_id": "E050",
+      "share_url_id": "b515e3dc-6193-4550-8d5d-3ecaa8088755",
+      "activity_triage": "Design"
+    },
+    {
+      "prompt_id": "E055",
+      "share_url_id": "43ed295b-993b-4c4f-9782-a746b9140e8c",
+      "activity_triage": "Maintenance"
+    },
+    {
+      "prompt_id": "E058",
+      "share_url_id": "b9a11492-1029-401c-a93e-05fbef0e7295",
+      "activity_triage": "Maintenance"
+    },
+    {
+      "prompt_id": "E071",
+      "share_url_id": "c553d5c1-3c73-4ffa-aae3-698e002ccdef",
+      "activity_triage": "Other"
+    },
+    {
+      "prompt_id": "E075",
+      "share_url_id": "cda15592-1515-461c-8245-0f676d3b6f0e",
+      "activity_triage": "Other"
+    },
+    {
+      "prompt_id": "E076",
+      "share_url_id": "d13bc0c9-4feb-4f1a-b97f-ddb7c8738b70",
+      "activity_triage": "Other"
+    },
+    {
+      "prompt_id": "E078",
+      "share_url_id": "039dc385-393b-4354-a95c-5c9d69a5da26",
+      "activity_triage": "Requirements"
+    },
+    {
+      "prompt_id": "E080",
+      "share_url_id": "2f397ea3-c3bb-4d08-bc61-901c1fba623b",
+      "activity_triage": "Requirements"
+    },
+    {
+      "prompt_id": "E087",
+      "share_url_id": "07387c2a-9e89-4fc2-86b7-74fe719ac0e5",
+      "activity_triage": "Testing"
+    },
+    {
+      "prompt_id": "E090",
+      "share_url_id": "2b022864-8309-4b7b-8f19-bf4349ebddfa",
+      "activity_triage": "Testing"
+    },
+    {
+      "prompt_id": "E099",
+      "share_url_id": "ad170578-c628-4182-bc14-b4d46a2b1648",
+      "activity_triage": "Testing"
+    }
+  ],
+  "note": "Pilot subset for tool/E2E workflow testing only; not a second evaluation sample."
+}
