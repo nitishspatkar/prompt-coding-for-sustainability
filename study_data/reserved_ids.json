@@ -1,0 +1,570 @@
+{
+  "purpose": "Reserved development subset. Do not use these share URLs in evaluation coding.",
+  "snapshot": "snapshot_20240514",
+  "ids": [
+    "07f7feb2-ce0d-47c3-a49a-8b6e907373f9",
+    "0de52576-92b8-4915-b4a4-19807ca531f5",
+    "14924a81-02c9-4012-b347-6832b334dd4a",
+    "23571316-f855-4456-8291-989b97d7476e",
+    "2840588d-3c8e-4b30-ae0e-77a37ab7f3c6",
+    "2d45bf7c-c67d-4db5-a074-f9fe771f25dc",
+    "352adc70-ba9e-4f3e-a40a-fd2c2d4d7770",
+    "39f35dbd-57cf-4e1a-8b09-9161af605b65",
+    "45231ade-f45e-495d-b9c8-da96718f4cb4",
+    "46df010d-28d3-4db8-a630-35643f25c1a2",
+    "49417c2c-0b99-4040-b38c-5ada37e080f5",
+    "577616e9-da48-40c4-826a-927028ce9196",
+    "5fa19af2-007d-43d7-a47c-367d8f7b33b7",
+    "711aa17b-c0f9-4d5b-ab31-4cbe1906a1f6",
+    "76d4817d-40b6-4f96-909b-0e7838d5f50c",
+    "7dae3a07-8663-49bc-8b3c-3488394a8b03",
+    "7e0c1d7b-17d9-47aa-ae9e-bb4da245100f",
+    "806a8993-2ccf-4ad8-ab72-663b0dcbb5e1",
+    "839adc2d-9eb3-4dac-a677-df10c30b3ab2",
+    "86580fc7-2c60-4974-bef6-e43ea9faa4e8",
+    "8dd8b0a2-a3d0-49a6-99dd-ff60b0b7445f",
+    "930460eb-2687-4e57-b683-e06ec3074eee",
+    "95f63b24-fbfb-4a3c-a179-dd74740658ac",
+    "a1bbd00d-c9d7-4846-a9af-12c6a475cd20",
+    "a7b5f884-6830-4e43-a363-2043a8c68957",
+    "a902f650-9176-4cd6-a52e-9b98e0bddae6",
+    "a965e1d0-324e-42f3-8068-0b6e758e18ed",
+    "aa80093e-3f71-43af-9f48-87d7c622311d",
+    "b1ed22ba-9504-4d2c-9c43-125e01f7358a",
+    "b2b3a55a-31a8-413f-af5f-4070b42710c5",
+    "b6046273-519f-4e13-a763-fe38d2c0aeae",
+    "ba3beff6-497b-4bcb-bed6-e93e3412fb0d",
+    "bdd1a777-5b28-4177-b330-6e6993c97a67",
+    "c009c129-57fe-4f85-8201-79ab5851a348",
+    "c849821b-feb1-4b00-976f-2c2ecdef209e",
+    "ca15533c-e004-439d-8c35-a34658e00921",
+    "cf97d3d8-e419-4878-9a2b-87409195340a",
+    "d0b354b3-04d4-4439-bb15-718d9ecd41f8",
+    "d542c135-2235-45c3-b54e-2140e8fd6293",
+    "d5a18a26-08b3-47ea-a1ac-952dee512285",
+    "d90f2653-832d-41d0-a8da-fda609ee0970",
+    "e3df2df3-de19-4a13-953a-4ea9751cde80",
+    "e3e3871f-4acd-4959-94a3-d260c84f8ede",
+    "e730ddce-2175-4cd4-9c46-b00130d12a87",
+    "ea2e4e07-fb33-45f1-9b66-0ac976c3bb96",
+    "edbfaba8-f225-4168-8d86-c8263ed9ddc5"
+  ],
+  "stratified_core": [
+    {
+      "url": "86580fc7-2c60-4974-bef6-e43ea9faa4e8",
+      "source": "issue",
+      "prompt_chars": 80,
+      "length_bucket": "short",
+      "num_prompts": 4,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "Can I use local storage in the browser to store the url of the page I\u2019m viewing "
+    },
+    {
+      "url": "07f7feb2-ce0d-47c3-a49a-8b6e907373f9",
+      "source": "issue",
+      "prompt_chars": 46,
+      "length_bucket": "short",
+      "num_prompts": 2,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "django how implement cursor based pagination ?"
+    },
+    {
+      "url": "806a8993-2ccf-4ad8-ab72-663b0dcbb5e1",
+      "source": "issue",
+      "prompt_chars": 153,
+      "length_bucket": "short",
+      "num_prompts": 1,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "There is a bug in the attached code that causes the marquee text to remain unanimated after changing state. Where is the problem and how can it be fixed?"
+    },
+    {
+      "url": "a965e1d0-324e-42f3-8068-0b6e758e18ed",
+      "source": "issue",
+      "prompt_chars": 44,
+      "length_bucket": "short",
+      "num_prompts": 8,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "Can you write a dummy model in Keras please?"
+    },
+    {
+      "url": "e730ddce-2175-4cd4-9c46-b00130d12a87",
+      "source": "issue",
+      "prompt_chars": 477,
+      "length_bucket": "medium",
+      "num_prompts": 6,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "I have a private key, I want to take a backup of it, but I don't want the key to be stored in 1 location\n\nI'm thinking my parents, girlfriend, 2 sisters, lawyer, and maybe a web service that requires one time code, let's call it pksms, so total of 7 actors. Then 4 pin code that is always needed.\nNow you know the actors in the system\n\nTo restore the key I want at least 3 people to confirm and the 4 pin\n\nHow would you implement this? Give me high level, then we'll dig deeper"
+    },
+    {
+      "url": "7e0c1d7b-17d9-47aa-ae9e-bb4da245100f",
+      "source": "issue",
+      "prompt_chars": 650,
+      "length_bucket": "medium",
+      "num_prompts": 1,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "When deploying my application and acessing the trips view, I get the following error on the logs:\n\n2023-08-16T00:24:44.874 app[148edd6da73638] gru [info] I, [2023-08-16T00:24:44.874304 #255] INFO -- : [12cc7135-b236-4ffe-8deb-55f2c08ce547] Completed 500 Internal Server Error in 5ms (ActiveRecord: 1.4ms | Allocations: 1878)\n\n2023-08-16T00:24:44.875 app[148edd6da73638] gru [info] F, [2023-08-16T00:24:44.875658 #255] FATAL -- : [12cc7135-b236-4ffe-8deb-55f2c08ce547]\n\n2023-08-16T00:24:44.875 app[148edd6da73638] gru [info] [12cc7135-b236-4ffe-8deb-55f2c08ce547] ActionView::Template::Error (PG::Unde"
+    },
+    {
+      "url": "c009c129-57fe-4f85-8201-79ab5851a348",
+      "source": "issue",
+      "prompt_chars": 596,
+      "length_bucket": "medium",
+      "num_prompts": 3,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": ".authorizeHttpRequests((requests) -> requests\n\t\t\t\t\t\t.requestMatchers(\"/\", \"/css/**\", \"js/**\", \"/image/**\").permitAll()\n\t\t\t\t\t\t.requestMatchers(\"/*.ico\").permitAll()\n\t\t\t\t\t\t.requestMatchers(HttpMethod.POST, \"/transactionAmounts\").hasRole(\"ADMIN\")\n\t\t\t\t\t\t.requestMatchers(HttpMethod.PUT, \"/transactionAmounts\").hasRole(\"ADMIN\")\n\t\t\t\t\t\t.requestMatchers(HttpMethod.DELETE, \"/transactionAmounts/{id}\").hasRole(\"ADMIN\")\n\t\t\t\t\t\t.requestMatchers(HttpMethod.POST, \"/transactionAmounts/{c_id}/upload_csv\").hasRole(\"ADMIN\")\n\t\t\t\t\t\t.anyRequest().authenticated())\nADMIN\u30ed\u30fc\u30eb\u3092\u6301\u3064\u30e6\u30fc\u30b6\u30fc\u306e\u307f\u306b\u3059\u3079\u3066\u306e/admin\u306e\u3064\u304f\u30d1\u30b9\u3078\u306e\u30a2\u30af\u30bb\u30b9\u8a31\u53ef\u3092\u4e0e\u3048\u305f\u3044\n\u65e5\u672c\u8a9e\u3067"
+    },
+    {
+      "url": "ea2e4e07-fb33-45f1-9b66-0ac976c3bb96",
+      "source": "issue",
+      "prompt_chars": 252,
+      "length_bucket": "medium",
+      "num_prompts": 1,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "/data01/rhino_xsg/software/anaconda3/envs/py310_cu121_vllm/compiler_compat/ld: cannot find -lcuda\ncollect2: error: ld returned 1 exit status\nerror: command '/data01/rhino_xsg/software/anaconda3/envs/py310_cu121_vllm/bin/g++' failed with exit code 1\n`\n\n"
+    },
+    {
+      "url": "46df010d-28d3-4db8-a630-35643f25c1a2",
+      "source": "issue",
+      "prompt_chars": 2725,
+      "length_bucket": "long",
+      "num_prompts": 23,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "\u4ee5\u4e0b\u3092\u65e5\u672c\u8a9e\u306b\u3057\u3066\u304f\u308c\n\nABSTRACT\nAs deep learning models nowadays are widely adopted by both\ncloud services and edge devices, reducing the latency of deep learning model inferences becomes crucial to provide efficient model\nserving. However, it is challenging to develop efficient tensor programs for deep learning operators due to the high complexity of\nmodern accelerators (e.g., NVIDIA GPUs and Google TPUs) and\nthe rapidly growing number of operators.\nDeep learning compilers, such as Apache TVM, adopt declarative scheduling primitives to lower the bar of developing tensor\nprograms. However, we show that "
+    },
+    {
+      "url": "839adc2d-9eb3-4dac-a677-df10c30b3ab2",
+      "source": "issue",
+      "prompt_chars": 2266,
+      "length_bucket": "long",
+      "num_prompts": 2,
+      "has_code_fence": true,
+      "flags": [],
+      "prompt_preview": "_expenses_table.html.erb\n\n<div class=\"mt-4 mb-2 overflow-x-auto\">\n  <table class=\"border-collapse border border-gray-300\">\n    <thead>\n      <tr class=\"bg-gray-200\">\n        <th class=\"border border-gray-300 py-2 px-4\">Title</th>\n        <th class=\"border border-gray-300 py-2 px-4\">Amount</th>\n        <th class=\"border border-gray-300 py-2 px-4\">Date</th>\n        <th class=\"border border-gray-300 py-2 px-4\">Description</th>\n        <th class=\"border border-gray-300 py-2 px-4\">Category</th>\n        <th class=\"border border-gray-300 py-2 px-4\" colspan=\"3\">Actions</th>\n      </tr>\n    </thead>\n  "
+    },
+    {
+      "url": "d542c135-2235-45c3-b54e-2140e8fd6293",
+      "source": "issue",
+      "prompt_chars": 1824,
+      "length_bucket": "long",
+      "num_prompts": 1,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "do research before answering\ngood ones get 200$ tip\nhttps://www.raspberrypi.com/documentation/computers/raspberry-pi.html#new-style-revision-codes-in-use\n\nplease give me a list in the right format of missing raspberry pi codes\nto following snippet\n\ndeclare -A rpimodels\nrpimodels[\"Beta\"]=\"BETA\"\nrpimodels[\"0002\"]=\"RPIB\"\nrpimodels[\"0003\"]=\"RPIB\"\nrpimodels[\"0004\"]=\"RPIB\"\nrpimodels[\"0005\"]=\"RPIB\"\nrpimodels[\"0006\"]=\"RPIB\"\nrpimodels[\"0007\"]=\"RPIA\"\nrpimodels[\"0008\"]=\"RPIA\"\nrpimodels[\"0009\"]=\"RPIA\"\nrpimodels[\"000d\"]=\"RPIB\"\nrpimodels[\"000e\"]=\"RPIB\"\nrpimodels[\"000f\"]=\"RPIB\"\nrpimodels[\"0010\"]=\"RPIB+\"\nrpim"
+    },
+    {
+      "url": "ca15533c-e004-439d-8c35-a34658e00921",
+      "source": "issue",
+      "prompt_chars": 18868,
+      "length_bucket": "verylong",
+      "num_prompts": 12,
+      "has_code_fence": false,
+      "flags": [
+        "energy"
+      ],
+      "prompt_preview": "<%@ page language=\"java\" contentType=\"text/html; charset=UTF-8\" pageEncoding=\"UTF-8\" %>\n<%@ taglib prefix=\"c\" uri=\"http://java.sun.com/jsp/jstl/core\" %>\n<%@ taglib prefix=\"fn\" uri=\"http://java.sun.com/jsp/jstl/functions\" %>\n<c:set var=\"height\" value=\"${600 / numberOfWeeks}\"></c:set>\n<c:set var=\"todaySdate\" value=\"${fn:substring(today,0,4)}${fn:substring(today,5,7)}${fn:substring(today,8,10)}\"></c:set>\n\n<!DOCTYPE html>\n<html>\n<head>\n    <%@ include file=\"../common/head.jspf\" %>\n    <style>\n        th { text-align: center; width: 14.28%;}\n        .disabled-link\t{ pointer-events: none; }\n    </st"
+    },
+    {
+      "url": "e3df2df3-de19-4a13-953a-4ea9751cde80",
+      "source": "issue",
+      "prompt_chars": 5559,
+      "length_bucket": "verylong",
+      "num_prompts": 3,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "<!DOCTYPE html>\n<html xmlns:th=\"http://www.thymeleaf.org\" xmlns:layout=\"http://www.ultraq.net.nz/thymeleaf/layout\"\n  layout:decorate=\"~{layout/layout}\">\n<th:block layout:fragment=\"content\">\n  <h1 th:if=\"${productForm.id == null}\">\u5546\u54c1\u65b0\u898f\u4f5c\u6210</h1>\n  <h1 th:if=\"${productForm.id != null}\">\u5546\u54c1\u7de8\u96c6</h1>\n  <hr />\n  <form th:action=\"@{/shops/{shopId}/products(shopId = ${shopId})}\"\n    th:method=\"@{${productForm.id == null} ? 'post' : 'put'}\" th:object=\"${productForm}\">\n    <input type=\"hidden\" th:field=\"*{id}\" />\n    <input type=\"hidden\" th:field=\"${shopId}\" />\n\n    <div class=\"form-group\">\n      <label for="
+    },
+    {
+      "url": "95f63b24-fbfb-4a3c-a179-dd74740658ac",
+      "source": "issue",
+      "prompt_chars": 6235,
+      "length_bucket": "verylong",
+      "num_prompts": 41,
+      "has_code_fence": false,
+      "flags": [
+        "security",
+        "energy"
+      ],
+      "prompt_preview": "B\"H\nI'm trying to download this AI from hugging face and I cant find any explanationation online anywehere.  I requested access to the GIT repo and now I donwloaded the files here\n\n.gitattributes\n1.52 kB\nSquashing commit\n20 days ago\nLICENSE.txt\n7.02 kB\nSquashing commit\n20 days ago\nREADME.md\n10.4 kB\nUpdate README.md\n19 days ago\nUSE_POLICY.md\n4.77 kB\nSquashing commit\n20 days ago\nconfig.json\n614 Bytes\nUpdate config.json\n7 days ago\ngeneration_config.json\n167 Bytes\nUpdate generation_config.json\n15 days ago\nmodel-00001-of-00002.safetensors\n9.98 GB\nLFS\nSquashing commit\n20 days ago\nmodel-00002-of-0000"
+    },
+    {
+      "url": "d5a18a26-08b3-47ea-a1ac-952dee512285",
+      "source": "pr",
+      "prompt_chars": 55,
+      "length_bucket": "short",
+      "num_prompts": 2,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "how are express.js middleware functions commonly named?"
+    },
+    {
+      "url": "930460eb-2687-4e57-b683-e06ec3074eee",
+      "source": "pr",
+      "prompt_chars": 73,
+      "length_bucket": "short",
+      "num_prompts": 1,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "what would be the dis advantages of a --no-check-certificate flag on wget"
+    },
+    {
+      "url": "49417c2c-0b99-4040-b38c-5ada37e080f5",
+      "source": "pr",
+      "prompt_chars": 240,
+      "length_bucket": "short",
+      "num_prompts": 10,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "i know there is a way to use a specific instance of S3 of SQS using boto3.client or boto3.resource by passing in a endpoint_url to these functions, but is there a way to do it globally using a set_endpoint_url function or something similar?"
+    },
+    {
+      "url": "7dae3a07-8663-49bc-8b3c-3488394a8b03",
+      "source": "pr",
+      "prompt_chars": 67,
+      "length_bucket": "short",
+      "num_prompts": 2,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "Please add insightful documentation to the following code snippet. "
+    },
+    {
+      "url": "352adc70-ba9e-4f3e-a40a-fd2c2d4d7770",
+      "source": "pr",
+      "prompt_chars": 880,
+      "length_bucket": "medium",
+      "num_prompts": 2,
+      "has_code_fence": true,
+      "flags": [],
+      "prompt_preview": "name: Workflow_CI\non:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [main]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    container: python:3.9-slim\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v3\n      - name: Install dependencies\n        run: |\n          python -m pip install --upgrade pip\n          pip install -r requirements.txt\n      - name: Link with flake8\n        run: |\n          flake8 src --count --select=E9,F63,F7,F82 --show-source --statistics\n          flake8 src --count --max-complexity=10 --max-line-length=127 --statistics\n      - name: Run unit t"
+    },
+    {
+      "url": "b6046273-519f-4e13-a763-fe38d2c0aeae",
+      "source": "pr",
+      "prompt_chars": 566,
+      "length_bucket": "medium",
+      "num_prompts": 2,
+      "has_code_fence": true,
+      "flags": [
+        "maintain"
+      ],
+      "prompt_preview": "import cmath\n\ndef quadratic_formula(a, b, c):\n    discriminant = b**2 - 4*a*c\n    root1 = (-b + cmath.sqrt(discriminant)) / (2*a)\n    root2 = (-b - cmath.sqrt(discriminant)) / (2*a)\n    return root1, root2\n\n# Example usage:\na = 1\nb = -3\nc = 2\nroot1, root2 = quadratic_formula(a, b, c)\nprint(\"Root 1:\", root1)\nprint(\"Root 2:\", root2)\n\nRefactor this code's documentation: Clarify purpose, parameters, and return values. Renaming variables to improve readability, and enhance clarity of the overall documentation by supplying the meanings and semantics of the examples."
+    },
+    {
+      "url": "23571316-f855-4456-8291-989b97d7476e",
+      "source": "pr",
+      "prompt_chars": 322,
+      "length_bucket": "medium",
+      "num_prompts": 1,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "I am using react native.\n\nI have a array of exercises.\nI also have another array of equipment.\n\nHow do I make it so the exercises displayed are filtered by the selected equipment.\nIf multiple equipment is selected, it should display all applicable exercises. If no equipment is selected, all exercises should be displayed."
+    },
+    {
+      "url": "a7b5f884-6830-4e43-a363-2043a8c68957",
+      "source": "pr",
+      "prompt_chars": 496,
+      "length_bucket": "medium",
+      "num_prompts": 9,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "In the context of a web server testing. What I want to do is to send three requests async using threads from a client (it will be a program). But what it interest me is to know how to track the requests. There is a way to know which is the request I sent first and which one is the second and which one is the thrid. I could ask for different resources, like page 1, page 2 and page 3. But there is another way like is I ping just the root? There would be a way to distinguish the three requests?"
+    },
+    {
+      "url": "cf97d3d8-e419-4878-9a2b-87409195340a",
+      "source": "pr",
+      "prompt_chars": 1910,
+      "length_bucket": "long",
+      "num_prompts": 1,
+      "has_code_fence": true,
+      "flags": [],
+      "prompt_preview": "Given the following C++17 function that utilises Qt APIs:\n\n```\nvoid TTextEdit::expandSelectionToWords()\n{\n    int yind = mPA.y();\n    int xind = mPA.x();\n    for (; xind >= 0; --xind) {\n        if (mpBuffer->lineBuffer.at(yind).at(xind) == QChar::Space\n            || mpHost->mDoubleClickIgnore.contains(mpBuffer->lineBuffer.at(yind).at(xind))) {\n            break;\n        }\n    }\n    mDragStart.setX(xind + 1);\n    mPA.setX(xind + 1);\n\n    yind = mPB.y();\n    xind = mPB.x();\n    for (; xind < static_cast<int>(mpBuffer->lineBuffer.at(yind).size()); ++xind) {\n        if (mpBuffer->lineBuffer.at(yi"
+    },
+    {
+      "url": "0de52576-92b8-4915-b4a4-19807ca531f5",
+      "source": "pr",
+      "prompt_chars": 1330,
+      "length_bucket": "long",
+      "num_prompts": 4,
+      "has_code_fence": true,
+      "flags": [],
+      "prompt_preview": "const onClick = async () => {\n        if (exporting) return;\n        setExporting(true);\n        try {\n            if (props.parseDslType === \"server\") {\n                await communicationStore.comm?.sendMsg(\"export_dataframe_by_payload\", {\n                    payload: {\n                        workflow: storeRef.current?.workflow,\n                    },\n                    encodings: storeRef.current?.currentVis.encodings,\n                });\n            } else {\n                const sql = parser_dsl_with_meta(\n                    \"pygwalker_mid_table\",\n                    JSON.stringify({w"
+    },
+    {
+      "url": "ba3beff6-497b-4bcb-bed6-e93e3412fb0d",
+      "source": "pr",
+      "prompt_chars": 3248,
+      "length_bucket": "long",
+      "num_prompts": 10,
+      "has_code_fence": true,
+      "flags": [],
+      "prompt_preview": "We are building a content management system and need to model access control to be able to read, write, and/or manage specific pieces of content and also display contributor credits (bylines, credits, etc) on specific resources. The cms we are building is called Course Builder and is focused on researching, designing, producing, and delivering educational content online.\n\nOne challenge is that at the early stages of creating Course Builder we have two databases. One database is mysql and that us where the `User` is modeled. Specific pieces of content such as articles, video tips, and lessons a"
+    },
+    {
+      "url": "76d4817d-40b6-4f96-909b-0e7838d5f50c",
+      "source": "pr",
+      "prompt_chars": 5019,
+      "length_bucket": "verylong",
+      "num_prompts": 7,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "None of the localStorage stuff renders on the page, although I can open the debugging console and verify that it's there.\n\nI don't know if this console error is related: Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'interest-cohort'.\n\nindex.html\n<!DOCTYPE html>\n<html>\n<head>\n    <title>Banzuke Surfing Game</title>\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n    <!-- Link to the external CSS file -->\n    <!-- Uncomment this if you have styles to include -->\n    <!-- <link rel=\"stylesheet\" href=\"styles.css\"> -"
+    },
+    {
+      "url": "d90f2653-832d-41d0-a8da-fda609ee0970",
+      "source": "pr",
+      "prompt_chars": 8345,
+      "length_bucket": "verylong",
+      "num_prompts": 4,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "Consider:\n###\n;;; pulsing-cursor.el --- Emacs cursor animation fading in & out while idling.-*- lexical-binding: t; -*-\n\n;; Copyright (C) 2022 Jason Jackson\n\n;; Author: Jason Jackson\n;; Created: 22 Apr 2022\n;; Homepage: https://github.com/jasonjckn/pulsing-cursor\n;; Keywords: extensions\n;; Package-Requires: ((emacs \"27.1\"))\n;; SPDX-License-Identifier: UNLICENSE\n;; Version: 1.0\n\n;;; Commentary:\n\n\n;; Please see https://github.com/jasonjckn/pulsing-cursor for more\n;; information.\n\n\n\n;;;; Libraries\n\n(require 'pulse)\n\n\n;;;; User Configuration\n\n(defgroup pulsing-cursor nil\n  \"Displaying text cursors"
+    },
+    {
+      "url": "d0b354b3-04d4-4439-bb15-718d9ecd41f8",
+      "source": "pr",
+      "prompt_chars": 4084,
+      "length_bucket": "verylong",
+      "num_prompts": 3,
+      "has_code_fence": false,
+      "flags": [],
+      "prompt_preview": "\u4ee5\u4e0b\u306e\u30b3\u30fc\u30c9\u3060\u3068\u5909\u66f4\u3092\u691c\u77e5\u3059\u308b\u30682\u56deFile changed\u304c\u30b3\u30f3\u30bd\u30fc\u30eb\u306b\u51fa\u529b\u3055\u308c\u3001\u30ea\u30ed\u30fc\u30c9\u30822\u56de\u3057\u3066\u3044\u307e\u3059\u3002\n\u539f\u56e0\u3092\u7279\u5b9a\u3057\u3066\u89e3\u6c7a\u3057\u3066\u304f\u3060\u3055\u3044\n// Desc: App entry point\n\nconst fs = require( 'fs' );\nconst path = require( 'path' );\nconst { dialog, ipcMain } = require('electron')\n\n// Desc: Get file path from user\nconst { getFilePath } = require( './modules/get_filepath' );\nconst { getFileEncoding } = require( './modules/detect_encoding' );\nconst { getFileContent } = require( './modules/get_file_content' );\nconst { parseMD } = require( './modules/parse_md' );\nconst { insertHTML } = require( './modules/insert_to_template' );\nconst { ExportPDF } = require( './modules/ex"
+    }
+  ],
+  "flagged_extra": [
+    {
+      "url": "711aa17b-c0f9-4d5b-ab31-4cbe1906a1f6",
+      "source": "pr",
+      "prompt_chars": 778,
+      "length_bucket": "medium",
+      "num_prompts": 1,
+      "has_code_fence": false,
+      "flags": [
+        "maintain"
+      ],
+      "prompt_preview": "refactor the code:\nIssue Description:\nPurpose of Code: Calculate the factorial of a given number.\nAreas for Improvement: The current implementation uses recursion, which is not efficient and poses a risk of stack overflow for large numbers. Refactoring aims to improve efficiency and safety.\nGoals for Refactoring: Implement an iterative approach to calculate the factorial, ensuring better performance and handling larger input values safely.\n\n#include <iostream>\n\nint factorial(int n) {\n    if (n == 0) {\n        return 1;\n    } else {\n        return n * factorial(n - 1);\n    }\n}\n\nint main() {\n   "
+    },
+    {
+      "url": "45231ade-f45e-495d-b9c8-da96718f4cb4",
+      "source": "pr",
+      "prompt_chars": 458,
+      "length_bucket": "medium",
+      "num_prompts": 1,
+      "has_code_fence": true,
+      "flags": [
+        "security"
+      ],
+      "prompt_preview": "    public function index()\n    {\n        $user = Auth::user();\n        $role = $user->role;\n\n        if ($role == 1) {\n            // \u7ba1\u7406\u80051\u306e\u5834\u5408\u3001\u540c\u3058\u30b5\u30fc\u30af\u30eb\u306e\u7ba1\u7406\u8005\u306e\u307f\u3092\u53d6\u5f97\n            $managers = User::where('club_id', $user->club_id)->get();\n        } elseif ($role == 2) {\n            // \u7ba1\u7406\u80052\u306e\u5834\u5408\u3001\u5168\u3066\u306e\u7ba1\u7406\u8005\u3092\u53d6\u5f97\n            $managers = User::with('club')->get();\n\n        }\n        return view('dashboard', compact('managers', 'role'));\n    }\n\u3053\u308c\u3063\u3066controller\u306e\u4e2d\u3058\u3083\u306a\u304f\u3066\u5225\u306e\u3068\u3053\u306b\u304b\u3051\u306a\u3044\u304b\u306a"
+    },
+    {
+      "url": "e3e3871f-4acd-4959-94a3-d260c84f8ede",
+      "source": "pr",
+      "prompt_chars": 123,
+      "length_bucket": "short",
+      "num_prompts": 1,
+      "has_code_fence": false,
+      "flags": [
+        "security"
+      ],
+      "prompt_preview": "how to add a token to the user every month? we are using django, and make sure to use django models/views to impelemtn this"
+    },
+    {
+      "url": "14924a81-02c9-4012-b347-6832b334dd4a",
+      "source": "issue",
+      "prompt_chars": 1210,
+      "length_bucket": "long",
+      "num_prompts": 9,
+      "has_code_fence": false,
+      "flags": [
+        "security"
+      ],
+      "prompt_preview": "@Configuration\n@EnableWebSecurity\npublic class WebSecurityConfig {\n\n\t@Bean\n\tSecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {\n\t\thttp\n\t\t\t\t.csrf(c -> c.ignoringRequestMatchers(\"auth/login\", \"auth/logout\")\n\t\t\t\t\t\t.csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler()))\n\t\t\t\t.cors(c -> c.disable())\n\t\t\t\t.authorizeHttpRequests((requests) -> requests\n\t\t\t\t\t\t.requestMatchers(\"/\", \"/css/**\", \"js/**\", \"/image/**\").permitAll()\n\t\t\t\t\t\t.requestMatchers(\"/*.ico\").permitAll()\n\t\t\t\t\t\t.anyRequest().authenticated())\n\t\t\t\t.formLogin((form) -> form\n\t\t\t\t\t\t.loginPage(\"/auth/login\")\n\t\t"
+    },
+    {
+      "url": "5fa19af2-007d-43d7-a47c-367d8f7b33b7",
+      "source": "issue",
+      "prompt_chars": 38835,
+      "length_bucket": "verylong",
+      "num_prompts": 2,
+      "has_code_fence": false,
+      "flags": [
+        "security",
+        "energy"
+      ],
+      "prompt_preview": "I ask question in next prompt - License: CC BY 4.0\narXiv:2402.17485v1 [cs.CV] 27 Feb 2024\n(eccv) Package eccv Warning: Package \u2018hyperref\u2019 is loaded with option \u2018pagebackref\u2019, which is *not* recommended for camera-ready version\n\ninstitutetext: Institute for Intelligent Computing, Alibaba Group\n1\n1\nemail: {tianlinrui.tlr, wilson.wq, zhangbang.zb, liefeng.bo}@alibaba-inc.com\n\nhttps://humanaigc.github.io/emote-portrait-alive/\nEMO: Emote Portrait Alive - Generating Expressive Portrait Videos with Audio2Video Diffusion Model under Weak Conditions\nLinrui Tian\nQi Wang\nBang Zhang\nLiefeng Bo\nAbstract\nIn"
+    },
+    {
+      "url": "2d45bf7c-c67d-4db5-a074-f9fe771f25dc",
+      "source": "issue",
+      "prompt_chars": 20716,
+      "length_bucket": "verylong",
+      "num_prompts": 2,
+      "has_code_fence": true,
+      "flags": [
+        "security"
+      ],
+      "prompt_preview": "mysql> show tables;\n+----------------------------+\n| Tables_in_isupipe          |\n+----------------------------+\n| icons                      |\n| livecomment_reports        |\n| livecomments               |\n| livestream_tags            |\n| livestream_viewers_history |\n| livestreams                |\n| ng_words                   |\n| reactions                  |\n| reservation_slots          |\n| tags                       |\n| themes                     |\n| users                      |\n+----------------------------+\n12 rows in set (0.00 sec)\n\nmysql> show create table icons;\n+-------+----------------"
+    },
+    {
+      "url": "a902f650-9176-4cd6-a52e-9b98e0bddae6",
+      "source": "issue",
+      "prompt_chars": 81,
+      "length_bucket": "short",
+      "num_prompts": 6,
+      "has_code_fence": false,
+      "flags": [
+        "cost"
+      ],
+      "prompt_preview": "Do you know any service that offers payment integration and billing as a service?"
+    },
+    {
+      "url": "2840588d-3c8e-4b30-ae0e-77a37ab7f3c6",
+      "source": "pr",
+      "prompt_chars": 3413,
+      "length_bucket": "long",
+      "num_prompts": 3,
+      "has_code_fence": false,
+      "flags": [
+        "energy"
+      ],
+      "prompt_preview": "I am going to give you C++ code that I want you to acknowledge and understand. Here is the C++ code:\n\n#include <iostream>\n#include <list>\n#include <stack>\n#include <string>\n#include <fstream>\n#include <unordered_map>\n\nusing namespace std;\n\nstruct edge{\n    string station;\n    double distance;\n};\n\nstack<string> _88MPH(unordered_map<string, list<edge>>, unordered_map<string, double>, string, double);\n\nint main(){\n    ifstream iFile;\n    string fileName;\n\n    string startingStation = \"\";\n    string neighborStation = \"\";\n    double neighborDistance = 0.0;\n\n    string stationName = \"\";\n    double p"
+    },
+    {
+      "url": "8dd8b0a2-a3d0-49a6-99dd-ff60b0b7445f",
+      "source": "pr",
+      "prompt_chars": 4297,
+      "length_bucket": "verylong",
+      "num_prompts": 1,
+      "has_code_fence": false,
+      "flags": [
+        "privacy",
+        "maintain"
+      ],
+      "prompt_preview": "what suggestions do you have to refactor this component?\n\nimport { AlertTriangle } from \"lucide-react\";\nimport { useState } from \"react\";\nimport { toast } from \"react-hot-toast\";\n\nimport { AdvancedOptionToggle } from \"../../AdvancedOptionToggle\";\nimport { Button } from \"../../Button\";\nimport { Input } from \"../../Input\";\nimport { Label } from \"../../Label\";\nimport {\n  checkForYoutubePrivacyMode,\n  checkForYoutubeUrl,\n  extractYoutubeId,\n  parseVideoUrl,\n} from \"../lib/utils\";\n\ninterface VideoSettingsProps {\n  uploadedVideoUrl: string;\n  setUploadedVideoUrl: (videoUrl: string) => void;\n  onFile"
+    },
+    {
+      "url": "b1ed22ba-9504-4d2c-9c43-125e01f7358a",
+      "source": "issue",
+      "prompt_chars": 26,
+      "length_bucket": "short",
+      "num_prompts": 2,
+      "has_code_fence": false,
+      "flags": [
+        "security"
+      ],
+      "prompt_preview": "How does CVE scoring work "
+    },
+    {
+      "url": "c849821b-feb1-4b00-976f-2c2ecdef209e",
+      "source": "issue",
+      "prompt_chars": 76,
+      "length_bucket": "short",
+      "num_prompts": 1,
+      "has_code_fence": false,
+      "flags": [
+        "security"
+      ],
+      "prompt_preview": "what are the remediating steps for the vulnerability seen on CVE-2023-24830?"
+    },
+    {
+      "url": "b2b3a55a-31a8-413f-af5f-4070b42710c5",
+      "source": "issue",
+      "prompt_chars": 11589,
+      "length_bucket": "verylong",
+      "num_prompts": 1,
+      "has_code_fence": true,
+      "flags": [
+        "security"
+      ],
+      "prompt_preview": "diagnose the following issue\n\n---\n### System information\n\n- **OS Platform and Distribution (e.g., Linux Ubuntu 16.04)**:\n- **MLflow installed from (source or binary)**:\n- **MLflow version (run ``mlflow --version``)**: 2.6.0\n- **Python version**:\n\n\n### Code to reproduce issue\n\nHi Team,\n\nI am trying to install mlflow application using latest version i.e. v2.6.0 in our kubernetes cluster but mlflow becomes inaccessible.\n\nFirst I have created Dockerfile and below is the code:\n```\nFROM ghcr.io/mlflow/mlflow:v2.6.0\n\nRUN apt-get update && apt-get install -y procps && rm -rf /var/lib/apt/lists/*\nRUN p"
+    }
+  ],
+  "guidebook_v1_1_examples": [
+    {
+      "guidebook_id": "A_docs",
+      "url": "7dae3a07-8663-49bc-8b3c-3488394a8b03",
+      "role": "activity_construction_docs"
+    },
+    {
+      "guidebook_id": "A_marquee",
+      "url": "806a8993-2ccf-4ad8-ab72-663b0dcbb5e1",
+      "role": "activity_construction_find_and_fix"
+    },
+    {
+      "guidebook_id": "A_cms",
+      "url": "ba3beff6-497b-4bcb-bed6-e93e3412fb0d",
+      "role": "activity_design_cms_excerpted"
+    },
+    {
+      "guidebook_id": "A_encrypt_concepts",
+      "url": "bdd1a777-5b28-4177-b330-6e6993c97a67",
+      "role": "activity_design_mixed_concepts"
+    },
+    {
+      "guidebook_id": "A_async_test",
+      "url": "a7b5f884-6830-4e43-a363-2043a8c68957",
+      "role": "activity_testing"
+    },
+    {
+      "guidebook_id": "A_trips_deploy",
+      "url": "7e0c1d7b-17d9-47aa-ae9e-bb4da245100f",
+      "role": "activity_maintenance_excerpted"
+    },
+    {
+      "guidebook_id": "A_express_names",
+      "url": "d5a18a26-08b3-47ea-a1ac-952dee512285",
+      "role": "activity_other_conceptual"
+    },
+    {
+      "guidebook_id": "B1",
+      "url": "07f7feb2-ce0d-47c3-a49a-8b6e907373f9",
+      "role": "not_relevant_short_clear"
+    },
+    {
+      "guidebook_id": "B2",
+      "url": "711aa17b-c0f9-4d5b-ab31-4cbe1906a1f6",
+      "role": "implicit_TEC"
+    },
+    {
+      "guidebook_id": "B3",
+      "url": "edbfaba8-f225-4168-8d86-c8263ed9ddc5",
+      "role": "multi_dimension_SOC_cant_tell"
+    },
+    {
+      "guidebook_id": "B4",
+      "url": "930460eb-2687-4e57-b683-e06ec3074eee",
+      "role": "edge_conceptual"
+    },
+    {
+      "guidebook_id": "TEC_bridge",
+      "url": "c849821b-feb1-4b00-976f-2c2ecdef209e",
+      "role": "explicit_TEC_CVE"
+    },
+    {
+      "guidebook_id": "W1",
+      "url": "e730ddce-2175-4cd4-9c46-b00130d12a87",
+      "role": "worked_medium_anonymised"
+    },
+    {
+      "guidebook_id": "W2",
+      "url": "8dd8b0a2-a3d0-49a6-99dd-ff60b0b7445f",
+      "role": "worked_long_messy_excerpted"
+    }
+  ],
+  "additional_teaching_candidates": [
+    "edbfaba8-f225-4168-8d86-c8263ed9ddc5",
+    "aa80093e-3f71-43af-9f48-87d7c622311d",
+    "a1bbd00d-c9d7-4846-a9af-12c6a475cd20",
+    "39f35dbd-57cf-4e1a-8b09-9161af605b65",
+    "577616e9-da48-40c4-826a-927028ce9196",
+    "bdd1a777-5b28-4177-b330-6e6993c97a67"
+  ],
+  "n_reserved": 46
+}

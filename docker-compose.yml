@@ -15,5 +15,28 @@ services:
       timeout: 5s
       retries: 10
 
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql://coder:coder@db:5432/prompt_coder
+      ADMIN_KEY: ${ADMIN_KEY:-dev-admin-key}
+      SESSION_SECRET: ${SESSION_SECRET:-dev-session-secret-change-me}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8080,http://127.0.0.1:8080}
+    volumes:
+      - ./backend/data:/app/data
+      - ./study_data:/study_data:ro
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
 volumes:
   prompt_coder_pg:
