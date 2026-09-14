@@ -7,7 +7,7 @@ import {
   submitAll,
 } from '../api'
 import { DIMS, VALS, SE_ACTIVITIES, emptyEffect, parsePromptText } from '../constants'
-import GuidelinesPanel from './GuidelinesPanel'
+import GuidebookModal from './GuidebookModal'
 import PromptListModal from './PromptListModal'
 import SubmitModal from './SubmitModal'
 
@@ -35,8 +35,6 @@ function relevanceFromApi(effects, isConfirmed) {
 export default function CodingView({
   participantId,
   isSubmitted,
-  panelOpen: panelOpenProp,
-  onPanelChange,
   onSubmitted,
 }) {
   const [prompt, setPrompt] = useState(null)
@@ -47,14 +45,13 @@ export default function CodingView({
   const [effects, setEffects] = useState([])
   const [cheatOpen, setCheatOpen] = useState(false)
   const [listOpen, setListOpen] = useState(false)
+  const [guidebookOpen, setGuidebookOpen] = useState(false)
   const [submitOpen, setSubmitOpen] = useState(false)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
   const [locked, setLocked] = useState(isSubmitted)
-
-  const panelOpen = panelOpenProp
 
   const loadList = useCallback(async () => {
     const data = await getAllPrompts(participantId)
@@ -284,12 +281,8 @@ export default function CodingView({
           <button type="button" className="btn-ghost" onClick={() => setListOpen(true)}>
             All prompts
           </button>
-          <button
-            type="button"
-            className="btn-ghost"
-            onClick={() => onPanelChange(!panelOpen)}
-          >
-            {panelOpen ? 'Hide guidelines' : 'Guidelines'}
+          <button type="button" className="btn-ghost" onClick={() => setGuidebookOpen(true)}>
+            Open guidebook
           </button>
         </div>
       </header>
@@ -520,8 +513,6 @@ export default function CodingView({
             ) : null}
           </div>
         </main>
-
-        {panelOpen ? <GuidelinesPanel onClose={() => onPanelChange(false)} /> : null}
       </div>
 
       {listOpen ? (
@@ -534,6 +525,8 @@ export default function CodingView({
           onClose={() => setListOpen(false)}
         />
       ) : null}
+
+      {guidebookOpen ? <GuidebookModal onClose={() => setGuidebookOpen(false)} /> : null}
 
       {submitOpen ? (
         <SubmitModal

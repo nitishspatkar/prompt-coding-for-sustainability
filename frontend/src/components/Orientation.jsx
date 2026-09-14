@@ -1,4 +1,9 @@
-export default function Orientation({ onContinue, onOpenGuidelines }) {
+import { useState } from 'react'
+import GuidebookModal from './GuidebookModal'
+
+export default function Orientation({ onContinue }) {
+  const [guidebookOpen, setGuidebookOpen] = useState(false)
+
   return (
     <div className="centered-screen">
       <div className="purpose-card">
@@ -18,8 +23,9 @@ export default function Orientation({ onContinue, onOpenGuidelines }) {
             the technology stack alone, and do not judge the quality of the prompt.
           </p>
           <p>
-            The coding guidelines stay available at all times from the button in the header.
-            Work at your own pace.
+            Please read the <strong>Coding Guidebook</strong> once before you start (quick
+            reference in this tool). You can open it again anytime from{' '}
+            <strong>Open guidebook</strong> in the header while coding.
           </p>
         </div>
         <p className="purpose-resume">
@@ -30,11 +36,12 @@ export default function Orientation({ onContinue, onOpenGuidelines }) {
           <button type="button" className="btn-primary" onClick={onContinue}>
             Start coding
           </button>
-          <button type="button" className="btn-secondary" onClick={onOpenGuidelines}>
-            Read the guidelines first
+          <button type="button" className="btn-secondary" onClick={() => setGuidebookOpen(true)}>
+            Open guidebook
           </button>
         </div>
       </div>
+      {guidebookOpen ? <GuidebookModal onClose={() => setGuidebookOpen(false)} /> : null}
     </div>
   )
 }

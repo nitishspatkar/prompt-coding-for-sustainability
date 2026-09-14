@@ -30,7 +30,6 @@ function CoderApp() {
     if (!s.has_seen_orientation) return 'orientation'
     return 'coding'
   })
-  const [panelOpen, setPanelOpen] = useState(false)
   const [doneStats, setDoneStats] = useState(null)
 
   useEffect(() => {
@@ -59,7 +58,7 @@ function CoderApp() {
     }
   }
 
-  async function startCoding(openPanel = false) {
+  async function startCoding() {
     if (session) {
       try {
         await markOrientation(session.participant_id)
@@ -70,7 +69,6 @@ function CoderApp() {
       saveSession(next)
       setSession(next)
     }
-    setPanelOpen(openPanel)
     setScreen('coding')
   }
 
@@ -87,12 +85,7 @@ function CoderApp() {
   }
 
   if (screen === 'orientation') {
-    return (
-      <Orientation
-        onContinue={() => startCoding(false)}
-        onOpenGuidelines={() => startCoding(true)}
-      />
-    )
+    return <Orientation onContinue={startCoding} />
   }
 
   if (screen === 'done') {
@@ -109,8 +102,6 @@ function CoderApp() {
     <CodingView
       participantId={session.participant_id}
       isSubmitted={!!session.is_submitted}
-      panelOpen={panelOpen}
-      onPanelChange={setPanelOpen}
       onSubmitted={handleSubmitted}
     />
   )

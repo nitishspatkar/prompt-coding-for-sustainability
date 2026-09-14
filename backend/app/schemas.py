@@ -4,9 +4,11 @@ from pydantic import BaseModel, Field
 
 SE_ACTIVITIES = (
     "Requirements",
+    "Architecture",
     "Design",
     "Construction",
     "Testing",
+    "Operations",
     "Maintenance",
     "Other",
 )

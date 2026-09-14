@@ -126,6 +126,17 @@ Export columns: `se_activity`, `is_relevant`, `dimension`, `valence`, `coder_not
 
 Coders assign SE activity, then relevance / effects per the guidebook; confirm per prompt; submit when done.
 
+The in-app **Open guidebook** overlay shows a **tool quick reference** derived from Coding Guidebook v1.2 (procedure, activity, relevance, dimensions, valence, examples). An inline dimensions/valence cheat-sheet remains on the coding screen when a prompt is marked relevant.
+
+### Guidebook files
+
+| File | Role |
+|---|---|
+| `study/prompt-dataset-analysis/Coding_Guidebook_V1.2.md` (parent workspace) | Full pre-read / source of truth for researchers |
+| `frontend/src/content/Coding_Guidebook_V1.2_for_tool.md` | Curated in-app quick reference |
+
+When coding rules change, update the full V1.2 first, then refresh the `_for_tool` file and rebuild the frontend (or re-run `./scripts/up-*.sh`). Keep version labels in sync.
+
 ---
 
 ## Pilot go-live
@@ -237,6 +248,7 @@ study_data/      prompts_eval_v1.csv (N=100), prompts_pilot_v1.csv (N=20), meta,
 backend/app/     FastAPI (routers, models, seed, migrate)
 backend/data/    participants.txt, participants_pilot.txt, demo prompts.csv
 frontend/        Vite + React (+ nginx in Docker)
+  src/content/   Coding_Guidebook_V1.2_for_tool.md (in-app quick reference)
 scripts/         up-pilot / up-study / down-pilot / down-study
 design/          UI reference HTML
 docker-compose.yml

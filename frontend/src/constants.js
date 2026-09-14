@@ -12,32 +12,42 @@ export const SE_ACTIVITIES = [
   {
     code: 'Requirements',
     short: 'What the system should do',
-    desc: 'Gathering, clarifying, writing, or reviewing needs — user stories, specs, or what a feature should include.',
+    desc: 'Stories, specs, acceptance criteria, eliciting or clarifying needs.',
+  },
+  {
+    code: 'Architecture',
+    short: 'Major system structure',
+    desc: 'Components, responsibilities, system-wide style or scale-out shape.',
   },
   {
     code: 'Design',
-    short: 'How it should be structured',
-    desc: 'Architecture, data models, interfaces, or choosing between approaches — how the system should be shaped.',
+    short: 'Detailed / UI design',
+    desc: 'Data models, interfaces, UI/usability/user flows/mockups, choosing an approach at component level.',
   },
   {
     code: 'Construction',
-    short: 'Write or change code, config, or infrastructure',
-    desc: 'Building or changing the software itself — writing, fixing, or modifying code, configuration, or infrastructure.',
+    short: 'Build or change code',
+    desc: 'Coding, refactor, implement, config-as-build, artefact docs. Default when there is no live/post-delivery cue.',
   },
   {
     code: 'Testing',
-    short: 'Tests, coverage, or how to observe a failure',
-    desc: 'Checking that it works — writing tests or test cases, coverage, or how to observe or track a failure.',
+    short: 'Tests or observe a failure',
+    desc: 'Tests, coverage, how to observe a failure — not find-and-fix.',
+  },
+  {
+    code: 'Operations',
+    short: 'Deploy, run, live incident',
+    desc: 'Deploy, run, provision, monitor, or a live incident (logs, downtime, rollback).',
   },
   {
     code: 'Maintenance',
-    short: 'Adapt or repair software already live or in use',
-    desc: 'Work on something already built and in use — a live issue, a post-release adaptation, or getting it running in a new environment.',
+    short: 'Evolve delivered software',
+    desc: 'Post-delivery / in-use / legacy / adapt-in-the-field — only when that frame is in the prompt.',
   },
   {
     code: 'Other',
-    short: 'No clear SE task (e.g. management, conceptual Q&A)',
-    desc: 'No clear software-engineering task — e.g. project management, process documentation, or a purely conceptual question.',
+    short: 'No system SE task',
+    desc: 'Pure concept or general knowledge, or residual (e.g. abstract project management).',
   },
 ]
 
