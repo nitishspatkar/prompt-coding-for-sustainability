@@ -52,7 +52,13 @@ Example: “what suggestions do you have to refactor this component?” + a long
 
 **One tag only.** If two seem present, tag the **primary request**.
 
-**Questions and explanations count.** “Explain” / “how does” / “what is” is not its own activity — tag the SE task the help is *about*. Use **Other** only when there is **no identifiable SE task for a system**.
+**Questions count as the work they are about.** A prompt that only asks to “explain,” “how does,” or “what is” still gets a normal activity tag — there is no separate “explanation” category. Ask: *with this answer, what kind of SE work would they be doing?*
+
+- Shaping how a system is structured → **Architecture** (e.g. “how should services scale by region?”).
+- Choosing an approach for something they will build → **Design** (e.g. “what concepts for a multi-party encrypt scheme in C#?”).
+- General knowledge with no system or task attached → **Other** (e.g. “what's the difference between REST and GraphQL?”).
+
+Use **Other** only when there is no system they are building, changing, testing, or running.
 
 Code activity even when not sustainability-relevant. Do not let activity decide relevance.
 
@@ -109,7 +115,9 @@ Long “this could eventually…” chains → usually **not relevant**. Technic
 | “This library is really convenient” / “nice if this ran faster” | “Cut polling from 100ms to 5s to reduce battery drain.” (ENV) |
 | “Cron that pings our own /health once a minute.” | “Cron that pings a competitor's API once per second, indefinitely.” |
 
-The **same** technical request can be relevant or not depending on whether a concrete impact is stated. Memory or “performance” alone is not ENV — ENV needs **resource use, energy, data volume, or pressure on devices/hardware**. Ordinary speed-tuning without that link stays not relevant (or maybe TEC if long-term reliability is at stake).
+The **same** technical request can be relevant or not depending on whether a concrete impact is stated. Do not assume a purpose that is not there; do not miss one that is. A security-related **topic** is not enough; the request has to do more than discuss the topic. Liking a library or wishing something were faster is not an impact.
+
+For memory / “performance” vs ENV vs TEC, see Dimensions below.
 
 ---
 
@@ -139,6 +147,8 @@ A **person’s** well-being, health, privacy, safety, or autonomy (including dar
 
 Energy, material resources, waste, hardware lifecycle (battery, data volume, pressure on devices). The word “energy” is not required.
 
+Memory or “performance” alone is not ENV. ENV needs **resource use, energy, data volume, or pressure on devices/hardware** (low-end mobiles, battery, servers running out of memory). Ordinary speed-tuning without that link stays not relevant, or may be TEC if only long-term reliability is at stake.
+
 | Example | Dimension | Coder note |
 |---|---|---|
 | “My phone gets hot when this runs.” | ENV | Heat / energy |
@@ -157,7 +167,7 @@ Energy, material resources, waste, hardware lifecycle (battery, data volume, pre
 
 **Long-term** technical health: maintainability, compatibility, security, keep working as things change — including load/risk that undermines *someone else’s* system.
 
-Not every bug fix or feature is TEC. Signal (not required): “before this becomes a problem,” “so we don't rewrite again,” “keeps breaking….” Construction ≠ TEC automatically.
+Not every bug fix or feature is TEC. Ordinary speed-tuning without resource/hardware pressure (see ENV) is usually **not** ENV; mark TEC only when long-term reliability or similar is actually engaged. Signal (not required): “before this becomes a problem,” “so we don't rewrite again,” “keeps breaking….” Construction ≠ TEC automatically.
 
 | Example | Dimension | Coder note |
 |---|---|---|
